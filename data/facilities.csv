@@ -1,0 +1,16 @@
+facility,region,medicine,current_stock,monthly_consumption,lead_time_days,expiry_days
+Abuja Central,FCT,Artemisinin,420,280,14,120
+Kaduna North,Kaduna,Artemisinin,900,300,21,45
+Kano West,Kano,Artemisinin,100,250,14,180
+Lagos Mainland,Lagos,Artemisinin,750,200,21,30
+Ibadan Central,Oyo,Artemisinin,350,280,14,90
+Abuja Central,FCT,Amoxicillin,1200,400,14,150
+Kaduna North,Kaduna,Amoxicillin,180,450,21,120
+Kano West,Kano,Amoxicillin,2500,300,21,40
+Lagos Mainland,Lagos,Amoxicillin,800,350,14,60
+Ibadan Central,Oyo,Amoxicillin,500,400,14,180
+Abuja Central,FCT,ORS,900,300,7,100
+Kaduna North,Kaduna,ORS,120,350,7,60
+Kano West,Kano,ORS,1800,300,14,30
+Lagos Mainland,Lagos,ORS,600,200,7,120
+Ibadan Central,Oyo,ORS,450,250,7,90
