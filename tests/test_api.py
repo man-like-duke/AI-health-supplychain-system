@@ -96,7 +96,7 @@ def test_inventory_endpoint():
     data = response.json()
 
     assert isinstance(data, list)
-    assert len(data) == 15
+    assert len(data) == 52
 
     assert "facility" in data[0]
     assert "medicine" in data[0]
@@ -176,7 +176,7 @@ def test_inventory_region_filter_is_case_insensitive():
 
     data = response.json()
 
-    assert len(data) == 3
+    assert len(data) == 7
     assert {item["region"] for item in data} == {"Lagos"}
 
 
@@ -190,7 +190,7 @@ def test_inventory_stockout_risk_filter():
 
     data = response.json()
 
-    assert len(data) == 2
+    assert len(data) == 3
     assert all(item["stockout_risk"] == "CRITICAL" for item in data)
 
 
@@ -218,7 +218,7 @@ def test_recommendations_destination_filter():
 
     data = response.json()
 
-    assert len(data) == 2
+    assert len(data) == 1
     assert all(item["destination_facility"] == "Kaduna North" for item in data)
 
 

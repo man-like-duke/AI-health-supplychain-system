@@ -19,8 +19,9 @@ def _write(tmp_path, df: pd.DataFrame):
 def test_loads_valid_dataset():
     df = load_facility_data()
 
-    assert len(df) == 15
-    assert df["facility"].nunique() == 5
+    assert len(df) == 52
+    assert df["facility"].nunique() == 12
+    assert df["medicine"].nunique() == 7
     assert pd.api.types.is_numeric_dtype(df["current_stock"])
     assert pd.api.types.is_numeric_dtype(df["lead_time_days"])
 

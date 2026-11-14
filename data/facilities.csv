@@ -4,13 +4,50 @@ Kaduna North,Kaduna,Artemisinin,900,300,21,45
 Kano West,Kano,Artemisinin,100,250,14,180
 Lagos Mainland,Lagos,Artemisinin,750,200,21,30
 Ibadan Central,Oyo,Artemisinin,350,280,14,90
+Port Harcourt,Rivers,Artemisinin,240,300,14,60
+Maiduguri,Borno,Artemisinin,300,200,30,90
+Sokoto,Sokoto,Artemisinin,375,250,30,120
 Abuja Central,FCT,Amoxicillin,1200,400,14,150
 Kaduna North,Kaduna,Amoxicillin,180,450,21,120
 Kano West,Kano,Amoxicillin,2500,300,21,40
 Lagos Mainland,Lagos,Amoxicillin,800,350,14,60
 Ibadan Central,Oyo,Amoxicillin,500,400,14,180
+Enugu,Enugu,Amoxicillin,420,400,21,90
+Benin City,Edo,Amoxicillin,600,500,14,45
+Maiduguri,Borno,Amoxicillin,600,300,30,60
 Abuja Central,FCT,ORS,900,300,7,100
-Kaduna North,Kaduna,ORS,120,350,7,60
+Kaduna North,Kaduna,ORS,180,350,7,60
 Kano West,Kano,ORS,1800,300,14,30
 Lagos Mainland,Lagos,ORS,600,200,7,120
 Ibadan Central,Oyo,ORS,450,250,7,90
+Port Harcourt,Rivers,ORS,140,300,7,45
+Maiduguri,Borno,ORS,90,300,14,60
+Sokoto,Sokoto,ORS,500,250,30,75
+Abuja Central,FCT,Paracetamol,1500,500,14,180
+Kaduna North,Kaduna,Paracetamol,700,500,21,90
+Kano West,Kano,Paracetamol,700,500,21,60
+Lagos Mainland,Lagos,Paracetamol,900,600,14,120
+Ibadan Central,Oyo,Paracetamol,700,500,14,60
+Enugu,Enugu,Paracetamol,360,450,21,90
+Jos,Plateau,Paracetamol,600,400,30,60
+Port Harcourt,Rivers,Paracetamol,500,550,14,75
+Kaduna North,Kaduna,Metformin,600,300,21,120
+Kano West,Kano,Metformin,500,350,21,90
+Lagos Mainland,Lagos,Metformin,900,300,14,150
+Ibadan Central,Oyo,Metformin,250,300,14,60
+Benin City,Edo,Metformin,240,300,21,90
+Sokoto,Sokoto,Metformin,450,250,30,75
+Abuja Central,FCT,Metformin,300,350,14,90
+Abuja Central,FCT,Insulin,180,120,14,90
+Lagos Mainland,Lagos,Insulin,300,150,14,60
+Port Harcourt,Rivers,Insulin,90,120,21,120
+Jos,Plateau,Insulin,120,100,21,90
+Maiduguri,Borno,Insulin,120,80,30,60
+Kaduna North,Kaduna,Insulin,240,120,21,120
+Kaduna North,Kaduna,Zinc sulfate,300,200,7,90
+Kano West,Kano,Zinc sulfate,240,250,14,60
+Ibadan Central,Oyo,Zinc sulfate,90,250,7,45
+Enugu,Enugu,Zinc sulfate,90,200,7,60
+Uyo,Akwa Ibom,Zinc sulfate,150,200,14,30
+Abuja Central,FCT,Zinc sulfate,420,300,14,120
+Lagos Mainland,Lagos,Zinc sulfate,300,250,7,90

@@ -10,7 +10,7 @@ def test_cli_json_output(capsys):
     data = json.loads(output)
 
     assert exit_code == 0
-    assert data["summary"]["facilities_analyzed"] == 5
+    assert data["summary"]["facilities_analyzed"] == 12
     assert data["governance"]["human_review_required"] is True
 
 

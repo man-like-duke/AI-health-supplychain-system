@@ -3,7 +3,9 @@
 A small, deterministic decision-support service for synthetic health
 supply-chain inventory risk and redistribution analysis. It identifies
 stockout and expiry risk, proposes redistribution candidates, and can
-optionally ask Gemini to explain the results in plain language.
+optionally ask Gemini to explain the results in plain language. A browser
+dashboard at `/dashboard` gives operators a filterable view of the same
+results.
 
 > **This is a prototype using synthetic data.** It contains no real
 > patient or facility data. Recommendations are analytical candidates
@@ -22,6 +24,8 @@ optionally ask Gemini to explain the results in plain language.
   never promised more than once.
 - Builds a structured decision summary with governance metadata.
 - Optionally produces a constrained LLM explanation of the summary.
+- Serves an operator dashboard with a risk matrix, shareable filters,
+  CSV export, and an explanation panel.
 
 ## Project structure
 
@@ -86,7 +90,8 @@ All endpoints except `/explanation` work without a key.
 uvicorn src.api:app --reload
 ```
 
-Open <http://127.0.0.1:8000/docs> for the interactive OpenAPI docs.
+Open <http://127.0.0.1:8000/docs> for the interactive OpenAPI docs and
+<http://127.0.0.1:8000/dashboard> for the operator dashboard.
 
 ### Open the dashboard
 
@@ -115,6 +120,26 @@ It provides:
 The dashboard calls `/summary`, `/inventory`, `/recommendations`, and
 `/explanation`; it never recalculates risk itself.
 
+#### Dashboard URL parameters
+
+| Parameter | Values | Applies to |
+| --- | --- | --- |
+| `region` | Any dataset region | Inventory rows; candidates touching that region |
+| `medicine` | Any dataset medicine | Inventory and candidates |
+| `risk` | `CRITICAL`, `HIGH`, `MEDIUM`, `LOW` | Inventory stockout risk; candidate destination risk |
+| `q` | Free text | Facility, region, medicine, source, and destination names |
+
+Parameters are optional and case-insensitive. Unknown values are
+discarded, and active filters are written back to the URL so a view can
+be bookmarked or shared.
+
+CSV exports contain the rows visible after filters are applied.
+
+The dashboard is read-only: it does not approve, execute, or persist
+recommendations. The explanation panel requires `GEMINI_API_KEY`; without
+it, the panel shows the API's `503` message and the rest of the dashboard
+continues to work.
+
 ### Run the CLI
 
 ```bash
@@ -136,7 +161,8 @@ python -m src.main --data path/to/facilities.csv --json
 | `GET` | `/summary` | Decision summary and governance metadata |
 | `GET` | `/explanation?refresh=false` | LLM explanation of the summary |
 
-Filters are case-insensitive and optional.
+Filters are case-insensitive and optional. The `/dashboard` and
+`/static/*` routes are browser-facing; the remaining routes return JSON.
 
 Example:
 
@@ -195,6 +221,10 @@ All thresholds and weights live in `src/config.py`.
 
 ## Data dictionary
 
+The bundled dataset is synthetic and deliberately sparse: 12 facilities
+across 12 regions, 7 medicines, and 52 facility/medicine rows. Not every
+facility stocks every medicine.
+
 `data/facilities.csv`:
 
 | Column | Meaning |
@@ -206,6 +236,10 @@ All thresholds and weights live in `src/config.py`.
 | `monthly_consumption` | Units consumed per month |
 | `lead_time_days` | Supplier lead time in days |
 | `expiry_days` | Remaining shelf life in days |
+
+`current_stock` and `monthly_consumption` are in medicine-specific units
+(tablets, sachets, vials), so days of stock are only compared within the
+same medicine.
 
 Validation rejects missing columns, non-numeric values, missing or blank
 fields, negative values, zero consumption, zero lead time, and duplicate
@@ -237,13 +271,18 @@ python -m pytest --cov=src
 
 Tests cover validation, risk boundaries, allocation limits, decision
 summary structure, prompt/guardrail behavior, provider caching and
-errors, and API status mapping.
+errors, API status mapping, and serving the dashboard and static assets.
 
 ## Production roadmap
 
+- Add an approve/reject workflow, persistence, and an audit trail for
+  dashboard recommendations.
+- Add dashboard authentication and role-based access.
 - Convert day-based transfers into units and add transport/cost models.
 - Add safety stock and configurable service levels.
-- Add authentication, rate limiting, and CORS.
+- Add authentication, rate limiting, and CORS for the API.
 - Add structured logging, metrics, and request IDs.
 - Add a container image and deployment workflow.
+- Add browser-level dashboard tests for filters, exports, and the
+  explanation panel.
 - Validate recommendations against historical outcomes.
