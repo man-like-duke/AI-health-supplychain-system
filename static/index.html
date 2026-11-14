@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Decision-support dashboard for synthetic health supply-chain inventory risk and redistribution analysis."
+    />
+    <title>Supply Chain Decision Support</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f766e'/%3E%3Cpath d='M32 14v36M14 32h36' stroke='white' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="app-header">
+      <div class="header-inner">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">+</div>
+          <div>
+            <h1>Supply Chain Decision Support</h1>
+            <p class="subtitle">
+              Inventory risk and redistribution analysis
+            </p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <span id="data-badge" class="badge badge-synthetic">
+            Synthetic data
+          </span>
+          <button
+            id="refresh-button"
+            class="button button-secondary"
+            type="button"
+          >
+            Refresh
+          </button>
+        </div>
+      </div>
+      <div class="governance-strip" aria-label="Governance controls">
+        <span>Decision support only</span>
+        <span>Human review required</span>
+        <span>No autonomous action</span>
+      </div>
+    </header>
+
+    <main id="main" class="layout">
+      <div
+        id="error-banner"
+        class="banner banner-error"
+        role="alert"
+        hidden
+      ></div>
+
+      <section class="kpi-grid" aria-label="Key indicators">
+        <article class="kpi" data-tone="info">
+          <span class="kpi-label">Facilities</span>
+          <strong id="kpi-facilities">–</strong>
+          <span class="kpi-note">in current view</span>
+        </article>
+        <article class="kpi" data-tone="critical">
+          <span class="kpi-label">Critical stockouts</span>
+          <strong id="kpi-critical">–</strong>
+          <span class="kpi-note">CRITICAL risk</span>
+        </article>
+        <article class="kpi" data-tone="high">
+          <span class="kpi-label">High stockouts</span>
+          <strong id="kpi-high">–</strong>
+          <span class="kpi-note">HIGH risk</span>
+        </article>
+        <article class="kpi" data-tone="medium">
+          <span class="kpi-label">Expiry risks</span>
+          <strong id="kpi-expiry">–</strong>
+          <span class="kpi-note">HIGH or MEDIUM</span>
+        </article>
+        <article class="kpi" data-tone="brand">
+          <span class="kpi-label">Candidates</span>
+          <strong id="kpi-candidates">–</strong>
+          <span class="kpi-note">allocated transfers</span>
+        </article>
+      </section>
+
+      <section class="panel controls" aria-label="Filters">
+        <div class="control">
+          <label for="filter-region">Region</label>
+          <select id="filter-region">
+            <option value="">All regions</option>
+          </select>
+        </div>
+        <div class="control">
+          <label for="filter-medicine">Medicine</label>
+          <select id="filter-medicine">
+            <option value="">All medicines</option>
+          </select>
+        </div>
+        <div class="control">
+          <label for="filter-risk">Stockout risk</label>
+          <select id="filter-risk">
+            <option value="">All risks</option>
+            <option value="CRITICAL">CRITICAL</option>
+            <option value="HIGH">HIGH</option>
+            <option value="MEDIUM">MEDIUM</option>
+            <option value="LOW">LOW</option>
+          </select>
+        </div>
+        <div class="control control-search">
+          <label for="filter-search">Search</label>
+          <input
+            id="filter-search"
+            type="search"
+            placeholder="Facility or medicine"
+            autocomplete="off"
+          />
+        </div>
+        <div class="control control-actions">
+          <button
+            id="clear-filters"
+            class="button button-ghost"
+            type="button"
+          >
+            Clear filters
+          </button>
+          <span
+            id="view-status"
+            class="view-status"
+            role="status"
+            aria-live="polite"
+          ></span>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="risk-heading">
+        <div class="panel-header">
+          <div>
+            <h2 id="risk-heading">Risk overview</h2>
+            <p class="panel-subtitle">
+              Stockout risk, coverage against the lead-time target, and
+              expiry risk by facility and medicine.
+            </p>
+          </div>
+          <button
+            id="export-inventory"
+            class="button button-ghost"
+            type="button"
+            disabled
+          >
+            Export inventory CSV
+          </button>
+        </div>
+        <div class="table-wrap">
+          <table class="risk-table" id="risk-table">
+            <caption class="sr-only">
+              Stockout and expiry risk by facility and medicine
+            </caption>
+            <thead id="risk-head"></thead>
+            <tbody id="risk-body"></tbody>
+          </table>
+        </div>
+        <div id="risk-empty" class="empty-state" hidden>
+          No inventory rows match the current filters.
+        </div>
+        <p class="legend" aria-label="Risk legend">
+          <span class="chip" data-risk="CRITICAL">CRITICAL</span>
+          <span class="chip" data-risk="HIGH">HIGH</span>
+          <span class="chip" data-risk="MEDIUM">MEDIUM</span>
+          <span class="chip" data-risk="LOW">LOW</span>
+          <span class="legend-note">
+            Coverage bars show days of stock against
+            <code>2 × lead time</code>.
+          </span>
+        </p>
+      </section>
+
+      <section class="panel" aria-labelledby="recommendation-heading">
+        <div class="panel-header">
+          <div>
+            <h2 id="recommendation-heading">Redistribution candidates</h2>
+            <p class="panel-subtitle">
+              Allocated transfers that protect the source facility's
+              reserve. All candidates require human review.
+            </p>
+          </div>
+          <button
+            id="export-recommendations"
+            class="button button-ghost"
+            type="button"
+            disabled
+          >
+            Export candidates CSV
+          </button>
+        </div>
+        <div class="table-wrap">
+          <table class="recommendation-table" id="recommendation-table">
+            <caption class="sr-only">
+              Allocated redistribution candidates
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Medicine</th>
+                <th scope="col">Route</th>
+                <th scope="col">Risk</th>
+                <th scope="col" class="numeric">Transfer</th>
+                <th scope="col" class="numeric">Gap after</th>
+                <th scope="col" class="numeric">Source surplus</th>
+                <th scope="col" class="numeric">Expiry</th>
+                <th scope="col" class="numeric">Score</th>
+                <th scope="col">Review</th>
+              </tr>
+            </thead>
+            <tbody id="recommendation-body"></tbody>
+          </table>
+        </div>
+        <div id="recommendation-empty" class="empty-state" hidden>
+          No redistribution candidates match the current filters.
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="explanation-heading">
+        <div class="panel-header">
+          <div>
+            <h2 id="explanation-heading">Explanation</h2>
+            <p class="panel-subtitle">
+              A constrained AI explanation of the deterministic results.
+              It does not make decisions.
+            </p>
+          </div>
+          <button
+            id="explain-button"
+            class="button button-primary"
+            type="button"
+            disabled
+          >
+            Generate explanation
+          </button>
+        </div>
+        <div
+          id="explanation-status"
+          class="status-line"
+          role="status"
+          aria-live="polite"
+        ></div>
+        <div
+          id="guardrail-warnings"
+          class="banner banner-warning"
+          role="status"
+          hidden
+        ></div>
+        <div id="explanation-output" class="explanation" hidden></div>
+        <div id="explanation-empty" class="empty-state">
+          Generate an explanation to see a plain-language summary for
+          decision-makers.
+        </div>
+      </section>
+
+      <section class="panel panel-muted" aria-labelledby="governance-heading">
+        <h2 id="governance-heading">Governance &amp; assumptions</h2>
+        <p id="governance-note"></p>
+        <details>
+          <summary>Assumptions and limitations</summary>
+          <ul id="assumptions-list"></ul>
+        </details>
+        <p class="footnote">
+          Data is synthetic. Recommendations are analytical candidates,
+          not instructions. An authorized health-program or supply-chain
+          professional must review and approve any action.
+        </p>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>AI Health Supply Chain Decision Support</span>
+      <span id="last-updated"></span>
+    </footer>
+
+    <noscript>
+      <div class="noscript">
+        This dashboard requires JavaScript. The underlying JSON API is
+        available at <a href="/docs">/docs</a>.
+      </div>
+    </noscript>
+
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
