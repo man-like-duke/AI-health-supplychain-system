@@ -1,0 +1,10 @@
+# Gitleaks configuration.
+#
+# The default rule set is used unchanged. If a false positive must be
+# suppressed, prefer a `# gitleaks:allow` comment on the line or a
+# rule-scoped `[[rules.allowlists]]` entry with `condition = "AND"`.
+# Global `[[allowlists]]` entries use OR semantics, so a path-only entry
+# would suppress every finding in that file.
+
+[extend]
+useDefault = true

@@ -10,3 +10,7 @@ htmlcov/
 *.egg-info/
 dist/
 build/
+
+# Security tooling output
+sbom.json
+semgrep.sarif

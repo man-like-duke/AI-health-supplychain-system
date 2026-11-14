@@ -30,6 +30,15 @@ results.
 ## Project structure
 
 ```text
+.github/
+  workflows/
+    ci.yml              Lint, format, and test gate
+    security.yml        Secrets, SAST, dependency audit, and SBOM
+    codeql.yml          CodeQL analysis for Python and JavaScript
+  dependabot.yml        Weekly dependency and action updates
+.semgrep/rules.yml      Project-specific static-analysis rules
+.gitleaks.toml          Narrow secret-scanning allowlist
+.pre-commit-config.yaml Local secret and lint hooks
 data/facilities.csv     Synthetic facility inventory dataset
 src/
   api.py                FastAPI application and response models
@@ -48,6 +57,7 @@ static/
   styles.css            Dashboard themes, layout, and print styles
   app.js                Dashboard data loading, filters, and CSV export
 tests/                  Unit and API tests
+SECURITY.md             Vulnerability disclosure and suppression policy
 ```
 
 ## Quick start
@@ -272,6 +282,63 @@ python -m pytest --cov=src
 Tests cover validation, risk boundaries, allocation limits, decision
 summary structure, prompt/guardrail behavior, provider caching and
 errors, API status mapping, and serving the dashboard and static assets.
+CI enforces a 90% coverage floor.
+
+## Security pipeline
+
+The repository runs a DevSecOps pipeline on every push to `main` and every
+pull request, plus a weekly scheduled run for newly disclosed issues.
+
+```text
+push / pull request
+   ├── CI ──────────────── ruff, format, pytest (90% coverage floor)
+   ├── Gitleaks ────────── secret scanning (full git history)
+   ├── Semgrep ─────────── SAST (p/python, p/owasp-top-ten, custom rules)
+   ├── pip-audit ───────── runtime and development dependencies
+   ├── Dependency Review ─ blocks new high/critical dependencies (PRs)
+   ├── CodeQL ──────────── dataflow SAST for Python and JavaScript
+   └── SBOM ────────────── CycloneDX artifact
+```
+
+| Check | Tool | Gate |
+| --- | --- | --- |
+| Secrets | Gitleaks | Any finding in git history |
+| SAST | Semgrep | `ERROR`-severity findings |
+| Dependencies | pip-audit | Any known vulnerability |
+| Dependency changes | Dependency Review | High or critical severity in a PR |
+| Deep SAST | CodeQL | Alerts under Security → Code scanning |
+| Supply chain | CycloneDX | SBOM generation or validation failure |
+
+Gitleaks comments on pull requests and fails the job. Rotate any secret it
+finds; deleting the line is not enough because the value remains in git
+history. Semgrep and CodeQL upload SARIF results to the Security tab.
+
+Dependabot (`.github/dependabot.yml`) opens grouped weekly pull requests
+for Python packages and GitHub Actions.
+
+### Run the checks locally
+
+```bash
+pip install -r requirements-dev.txt
+pre-commit install
+pre-commit run --all-files
+pip-audit -r requirements.txt -r requirements-dev.txt
+pip install semgrep==1.185.0
+semgrep scan --config p/python --config p/owasp-top-ten \
+  --config .semgrep/rules.yml --severity=ERROR --error .
+```
+
+The Gitleaks pre-commit hook needs a Gitleaks binary on `PATH`; see
+[SECURITY.md](SECURITY.md) for installation and the suppression policy.
+
+### Repository settings
+
+These controls are configured in GitHub, not in this repository:
+
+- Require the `CI`, `Security`, and `CodeQL` checks before merging.
+- Enable secret scanning and push protection.
+- Disable CodeQL default setup before using the custom `codeql.yml`
+  workflow; default and advanced setups cannot analyze the same language.
 
 ## Production roadmap
 

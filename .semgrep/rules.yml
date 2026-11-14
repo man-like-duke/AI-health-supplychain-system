@@ -1,0 +1,86 @@
+rules:
+  - id: no-eval-or-exec
+    languages:
+      - python
+    message: >-
+      eval() and exec() can execute untrusted input. Use an explicit parser
+      or a fixed dispatch table instead.
+    severity: ERROR
+    metadata:
+      category: security
+    pattern-either:
+      - pattern: eval(...)
+      - pattern: exec(...)
+
+  - id: no-subprocess-shell-true
+    languages:
+      - python
+    message: >-
+      Do not call subprocess or os.system with a shell. Pass an argument
+      list so untrusted values cannot be interpreted as shell syntax.
+    severity: ERROR
+    metadata:
+      category: security
+    pattern-either:
+      - pattern: subprocess.$FUNC(..., shell=True, ...)
+      - pattern: os.system(...)
+
+  - id: no-tls-verification-disabled
+    languages:
+      - python
+    message: >-
+      TLS certificate verification must not be disabled. Remove verify=False
+      and fix the certificate trust configuration instead.
+    severity: ERROR
+    metadata:
+      category: security
+    pattern-either:
+      - pattern: httpx.$FUNC(..., verify=False, ...)
+      - pattern: requests.$FUNC(..., verify=False, ...)
+
+  - id: no-pickle-deserialization
+    languages:
+      - python
+    message: >-
+      Unpickling untrusted data can execute arbitrary code. Use JSON or
+      another data-only format.
+    severity: ERROR
+    metadata:
+      category: security
+    pattern-either:
+      - pattern: pickle.load(...)
+      - pattern: pickle.loads(...)
+
+  - id: no-fastapi-debug-mode
+    languages:
+      - python
+    message: >-
+      FastAPI debug mode exposes tracebacks and internals. Leave debug
+      disabled in application code.
+    severity: ERROR
+    metadata:
+      category: security
+    pattern: FastAPI(..., debug=True, ...)
+
+  - id: no-wildcard-cors
+    languages:
+      - python
+    message: >-
+      Wildcard CORS origins allow any site to call the API. List trusted
+      origins explicitly.
+    severity: ERROR
+    metadata:
+      category: security
+    pattern: CORSMiddleware(..., allow_origins=["*"], ...)
+
+  - id: hardcoded-google-api-key
+    languages:
+      - python
+      - javascript
+    message: >-
+      A Google API key appears to be hardcoded. Read it from the environment
+      and rotate any key that was committed.
+    severity: ERROR
+    metadata:
+      category: security
+    pattern-regex: 'AIza[0-9A-Za-z_\-]{35}'
