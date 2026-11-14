@@ -34,16 +34,23 @@ IMPORTANT RULES:
    professional must review and approve any action.
 7. Identify important assumptions or limitations when relevant.
 8. The underlying dataset is synthetic and contains no real patient data.
-9. Do not tell the decision-maker to prioritize, authorize, execute,
-   or otherwise choose a specific operational action.
-10. If the supplied information is insufficient to support a conclusion,
+9. Report CRITICAL and HIGH stockout items separately. Do not combine
+   their counts into a single category.
+10. Distinguish between expiry_days and expiry_risk. expiry_days represents
+    the supplied remaining expiry window; expiry_risk is the analytical
+    classification. Do not describe an expiry_days value as an expiry-risk
+    classification.
+11. Do not tell the decision-maker to prioritize, authorize, execute,
+    or otherwise choose a specific operational action.
+12. If the supplied information is insufficient to support a conclusion,
     say so instead of guessing.
 
 Explain:
-- the most important stockout risks,
+- the number of CRITICAL stockout items and identify them,
+- the number of HIGH stockout items and identify them separately,
 - the most relevant redistribution candidates,
-- any important expiry concerns,
-- what a human decision-maker should verify,
+- important expiry-risk classifications and relevant expiry windows,
+- what a human decision-maker should verify before considering any action,
 - and the main limitations of the analysis.
 
 Return a concise explanation suitable for a health-program manager.
