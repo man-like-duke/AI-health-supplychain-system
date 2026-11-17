@@ -7,6 +7,10 @@ optionally ask Gemini to explain the results in plain language. A browser
 dashboard at `/dashboard` gives operators a filterable view of the same
 results.
 
+A separate Scikit-learn model adds a 30-day stockout probability as
+predictive evidence. The deterministic rules stay authoritative, and the
+model never takes an action.
+
 > **This is a prototype using synthetic data.** It contains no real
 > patient or facility data. Recommendations are analytical candidates
 > only and must be reviewed and approved by an authorized health-program
@@ -23,9 +27,11 @@ results.
 - Allocates transfers greedily so a destination gap or source surplus is
   never promised more than once.
 - Builds a structured decision summary with governance metadata.
+- Predicts a 30-day stockout probability with a persisted Scikit-learn
+  model trained on reproducible synthetic history.
 - Optionally produces a constrained LLM explanation of the summary.
 - Serves an operator dashboard with a risk matrix, shareable filters,
-  CSV export, and an explanation panel.
+  CSV export, an ML prediction panel, and an explanation panel.
 
 ## Project structure
 
@@ -40,6 +46,18 @@ results.
 .gitleaks.toml          Narrow secret-scanning allowlist
 .pre-commit-config.yaml Local secret and lint hooks
 data/facilities.csv     Synthetic facility inventory dataset
+data/synthetic_stockout_history.csv
+                        Reproducible synthetic monthly history for ML
+ml/
+  __init__.py           Package marker
+  schema.py             Canonical feature and target columns
+  data_generation.py    Synthetic history and forward-window target
+  preprocessing.py      Validation, derived features, sklearn pipeline
+  evaluate.py           Metrics, F2 threshold selection, report
+  train.py              Train, compare, select, and persist the model
+  predict.py            Cached artifact loading and inference
+  artifacts/            Persisted model, metadata, and evaluation report
+  MODEL_CARD.md         Intended use, metrics, and limitations
 src/
   api.py                FastAPI application and response models
   config.py             Thresholds, weights, and tunable assumptions
@@ -122,13 +140,17 @@ It provides:
   stored in the URL, for example
   `/dashboard?region=Lagos&risk=CRITICAL`.
 - CSV export of the current filtered inventory and candidates.
+- An ML prediction panel with three separate cards: deterministic risk,
+  ML prediction, and a decision-support recommendation. The model never
+  decides or acts.
 - A "Generate explanation" panel with loading, error (`503`), and
   guardrail-warning states.
 - Light/dark themes, responsive layouts, keyboard focus styles, and
   print styles.
 
-The dashboard calls `/summary`, `/inventory`, `/recommendations`, and
-`/explanation`; it never recalculates risk itself.
+The dashboard calls `/summary`, `/inventory`, `/recommendations`,
+`/predict-stockout`, and `/explanation`; it never recalculates risk or
+runs a model in the browser.
 
 #### Dashboard URL parameters
 
@@ -169,6 +191,7 @@ python -m src.main --data path/to/facilities.csv --json
 | `GET` | `/inventory?region=&medicine=&stockout_risk=` | Per-facility inventory risk |
 | `GET` | `/recommendations?medicine=&source_facility=&destination_facility=` | Allocated redistribution candidates |
 | `GET` | `/summary` | Decision summary and governance metadata |
+| `POST` | `/predict-stockout` | 30-day stockout probability for one pair |
 | `GET` | `/explanation?refresh=false` | LLM explanation of the summary |
 
 Filters are case-insensitive and optional. The `/dashboard` and
@@ -229,6 +252,179 @@ days_of_stock = current_stock / (monthly_consumption / 30)
 
 All thresholds and weights live in `src/config.py`.
 
+## Machine learning stockout prediction
+
+### Problem
+
+The deterministic rules answer "how many days of cover does this pair
+have right now?" The ML model answers a different, complementary
+question: **what is the probability that this facility/medicine pair
+records a stockout at some point in the next 30 days?** It is predictive
+evidence for human review, not a replacement for the rules.
+
+### Dataset and target
+
+`data/synthetic_stockout_history.csv` is generated from the 52-row
+facility snapshot. Each facility/medicine pair gets 12 monthly
+observations, producing 624 rows with 117 positives (18.8%).
+
+The target `stockout_within_30_days` is produced by a **separate forward
+simulation** after the features are recorded. That simulation draws
+future demand, future replenishment arrivals, and a possible supply
+disruption. Future draws are never written to a feature column, so the
+label cannot leak into the inputs.
+
+```bash
+python -m ml.data_generation
+```
+
+Generation is deterministic for a fixed seed (`42` by default) and
+requires no paid service, GPU, or cloud runtime.
+
+### Features
+
+Features are observed at prediction time only:
+
+| Feature | Type | Meaning |
+| --- | --- | --- |
+| `month` | numeric | Calendar month (1–12) |
+| `current_stock` | numeric | Units on hand |
+| `monthly_consumption` | numeric | Units consumed per month |
+| `recent_consumption_trend` | numeric | Recent demand ratio |
+| `lead_time_days` | numeric | Supplier lead time |
+| `historical_stockout_count` | numeric | Prior stockouts for the pair |
+| `replenishment_frequency` | numeric | Expected replenishments per month |
+| `expiry_days` | numeric | Remaining shelf life |
+| `avg_daily_consumption` | derived | `monthly_consumption / 30` |
+| `days_of_stock` | derived | `current_stock / avg_daily_consumption` |
+| `facility`, `region`, `medicine` | categorical | One-hot encoded identifiers |
+
+Derived columns are recomputed from raw inputs at both training and
+inference time, so the definitions cannot drift.
+
+### Preprocessing and split
+
+- A single scikit-learn `Pipeline` contains a `ColumnTransformer`:
+  median imputation plus `StandardScaler` for numeric features, and
+  most-frequent imputation plus `OneHotEncoder(handle_unknown="ignore")`
+  for categorical features.
+- Preprocessing is fitted **inside** the pipeline on training rows only.
+- Rows are split 60/20/20 with `StratifiedGroupKFold`, grouped by
+  facility/medicine pair. A pair appears in exactly one split, so
+  adjacent months cannot inflate the score.
+- Model and threshold are selected on the validation split. The test
+  split is touched once for the final estimate.
+
+### Models and selection
+
+Two candidates are trained:
+
+1. Logistic Regression (baseline, interpretable).
+2. Random Forest (200 trees, `max_depth=10`, `min_samples_leaf=2`).
+
+The selection policy is **F2-first with a precision floor**:
+
+1. Sweep decision thresholds from `0.50` down to `0.20`.
+2. Keep operating points with precision at least `0.40`.
+3. Choose the highest validation F2, which weights recall twice as
+   heavily as precision.
+4. Break ties on recall, then ROC-AUC.
+
+Accuracy is reported but is not used to select the model. Missing a
+stockout is treated as costlier than an unnecessary review, while the
+precision floor keeps alert volume usable.
+
+### Results
+
+Validation split (selection):
+
+| Model | Threshold | Precision | Recall | F1 | F2 | ROC-AUC |
+| --- | --- | --- | --- | --- | --- | --- |
+| Logistic Regression | 0.20 | 0.462 | 0.667 | 0.545 | 0.612 | 0.865 |
+| Random Forest | 0.20 | 0.442 | 0.852 | 0.582 | **0.719** | 0.862 |
+
+Held-out test split (single estimate):
+
+| Model | Threshold | Precision | Recall | F1 | F2 | ROC-AUC | TN/FP/FN/TP |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Logistic Regression | 0.20 | 0.594 | 0.792 | 0.679 | 0.742 | 0.924 | 95/13/5/19 |
+| Random Forest | 0.20 | 0.621 | 0.750 | 0.679 | 0.720 | 0.921 | 97/11/6/18 |
+
+**Selected model:** Random Forest at threshold `0.20`, chosen on
+validation F2. The test split is small (132 rows, 24 positives), so the
+difference between the two models on test is well within noise.
+Logistic Regression remains a reasonable, more interpretable
+alternative.
+
+The false-negative/false-positive trade-off is explicit: lowering the
+threshold raises recall but lowers precision. At `0.15`, validation
+precision falls to `0.393`, below the `0.40` floor, so `0.20` is the
+best F2 operating point that respects the policy.
+
+### Train, evaluate, and predict
+
+```bash
+python -m ml.data_generation   # regenerate the synthetic history
+python -m ml.train             # fit both models, select, persist artifacts
+python -m ml.evaluate          # print the persisted evaluation report
+```
+
+Artifacts are written to `ml/artifacts/`:
+
+- `stockout_model.joblib` — the fitted preprocessing + classifier pipeline.
+- `model_metadata.json` — model id/version, threshold, features, split
+  sizes, metrics, dataset SHA-256, and limitations.
+- `evaluation_report.json` — both models, threshold sweeps, and the
+  held-out estimate.
+
+The API loads this artifact once and caches it by file modification time.
+It never trains per request.
+
+### API integration
+
+```bash
+curl -X POST http://127.0.0.1:8000/predict-stockout \
+  -H "Content-Type: application/json" \
+  -d '{
+    "facility": "Kaduna North",
+    "region": "Kaduna",
+    "medicine": "Amoxicillin",
+    "month": 7,
+    "current_stock": 180,
+    "monthly_consumption": 450,
+    "lead_time_days": 21,
+    "expiry_days": 120,
+    "recent_consumption_trend": 1.1,
+    "historical_stockout_count": 2,
+    "replenishment_frequency": 1.4
+  }'
+```
+
+The response includes the predicted class, label, probability, display
+band (`HIGH >= 0.70`, `MODERATE >= 0.40`, else `LOW`), decision
+threshold, model id/version, an optional deterministic reference for the
+same pair, and governance metadata. Inputs are validated by Pydantic;
+unknown fields are rejected. A missing or unloadable artifact returns
+`503`.
+
+### Safeguards and limitations
+
+- Synthetic data only. Every metric describes this simulation, not
+  real-world clinical or operational performance.
+- The deterministic classification remains authoritative. ML output is
+  supporting evidence.
+- The model never orders, transfers, or allocates stock, and
+  `governance.autonomous_action` is always `false`.
+- Human review by an authorized supply-chain professional is required.
+- The simulation is stylised: demand, lead times, and replenishment do
+  not capture real seasonality, policy, or cold-chain constraints.
+- Probabilities are not calibrated for operational thresholds.
+- The test split is small, so held-out metrics carry wide uncertainty.
+- Unseen facilities or medicines at inference are ignored by the
+  encoder; prediction then relies mainly on numeric features.
+
+See [ml/MODEL_CARD.md](ml/MODEL_CARD.md) for the model card.
+
 ## Data dictionary
 
 The bundled dataset is synthetic and deliberately sparse: 12 facilities
@@ -251,6 +447,20 @@ facility stocks every medicine.
 (tablets, sachets, vials), so days of stock are only compared within the
 same medicine.
 
+`data/synthetic_stockout_history.csv` adds the ML history:
+
+| Column | Meaning |
+| --- | --- |
+| `facility`, `region`, `medicine` | Pair identifiers |
+| `month` | Calendar month |
+| `current_stock`, `monthly_consumption` | Observed stock and demand |
+| `recent_consumption_trend` | Ratio versus the previous month |
+| `lead_time_days`, `expiry_days` | Observed supply constraints |
+| `historical_stockout_count` | Prior stockouts for the pair |
+| `replenishment_frequency` | Expected replenishments per month |
+| `avg_daily_consumption`, `days_of_stock` | Derived coverage features |
+| `stockout_within_30_days` | Binary forward-simulation target |
+
 Validation rejects missing columns, non-numeric values, missing or blank
 fields, negative values, zero consumption, zero lead time, and duplicate
 facility/medicine rows.
@@ -259,10 +469,15 @@ facility/medicine rows.
 
 - Synthetic data only; no real patient information.
 - The deterministic layers make the classifications; the LLM only
-  explains them.
+  explains them and the ML model only adds a probability.
 - The LLM receives a constrained prompt and its output is checked for
   CRITICAL/HIGH reporting and a human-review statement. Warnings are
   returned in `governance.guardrail_warnings`.
+- The ML model never acts autonomously. The dashboard shows
+  deterministic risk, ML prediction, and a decision-support
+  recommendation as separate cards.
+- Model artifacts are repository-controlled and loaded with `joblib`;
+  the path is fixed in code and never comes from request input.
 - Days of stock are treated as comparable across facilities. Production
   use should convert transfers to units using monthly consumption.
 - The model does not yet include transport cost, cold-chain constraints,
@@ -276,13 +491,15 @@ facility/medicine rows.
 python -m pytest
 # with coverage
 pip install -r requirements-dev.txt
-python -m pytest --cov=src
+python -m pytest --cov=src --cov=ml
 ```
 
 Tests cover validation, risk boundaries, allocation limits, decision
 summary structure, prompt/guardrail behavior, provider caching and
-errors, API status mapping, and serving the dashboard and static assets.
-CI enforces a 90% coverage floor.
+errors, API status mapping, synthetic generation determinism, feature
+derivation, grouped splits, preprocessing, training and selection,
+artifact persistence and loading, prediction ranges, and the prediction
+endpoint. CI enforces a 90% coverage floor across `src` and `ml`.
 
 ## Security pipeline
 

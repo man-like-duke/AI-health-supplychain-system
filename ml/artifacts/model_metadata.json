@@ -1,0 +1,122 @@
+{
+  "model_id": "stockout-risk-30d",
+  "model_version": "1.0.0",
+  "algorithm": "random_forest",
+  "trained_at_utc": "2026-11-17T04:37:36+00:00",
+  "random_state": 42,
+  "decision_threshold": 0.2,
+  "features": [
+    "month",
+    "current_stock",
+    "monthly_consumption",
+    "avg_daily_consumption",
+    "recent_consumption_trend",
+    "days_of_stock",
+    "lead_time_days",
+    "historical_stockout_count",
+    "replenishment_frequency",
+    "expiry_days",
+    "facility",
+    "region",
+    "medicine"
+  ],
+  "numeric_features": [
+    "month",
+    "current_stock",
+    "monthly_consumption",
+    "avg_daily_consumption",
+    "recent_consumption_trend",
+    "days_of_stock",
+    "lead_time_days",
+    "historical_stockout_count",
+    "replenishment_frequency",
+    "expiry_days"
+  ],
+  "categorical_features": [
+    "facility",
+    "region",
+    "medicine"
+  ],
+  "target": "stockout_within_30_days",
+  "training_rows": 348,
+  "validation_rows": 144,
+  "test_rows": 132,
+  "class_balance": {
+    "positive": 117,
+    "negative": 507
+  },
+  "split_strategy": "StratifiedGroupKFold grouped by facility/medicine pair (60/20/20 train/validation/test)",
+  "sklearn_version": "1.9.1",
+  "metrics": {
+    "threshold": 0.2,
+    "accuracy": 0.8712121212121212,
+    "precision": 0.6206896551724138,
+    "recall": 0.75,
+    "f1": 0.6792452830188679,
+    "f2": 0.72,
+    "roc_auc": 0.9209104938271606,
+    "confusion_matrix": {
+      "true_negative": 97,
+      "false_positive": 11,
+      "false_negative": 6,
+      "true_positive": 18
+    },
+    "support": {
+      "negative": 108,
+      "positive": 24
+    }
+  },
+  "validation_metrics": {
+    "threshold": 0.2,
+    "accuracy": 0.7708333333333334,
+    "precision": 0.4423076923076923,
+    "recall": 0.8518518518518519,
+    "f1": 0.5822784810126582,
+    "f2": 0.71875,
+    "roc_auc": 0.8616650838873061,
+    "confusion_matrix": {
+      "true_negative": 88,
+      "false_positive": 29,
+      "false_negative": 4,
+      "true_positive": 23
+    },
+    "support": {
+      "negative": 117,
+      "positive": 27
+    }
+  },
+  "validation_baseline_at_0_5": {
+    "threshold": 0.5,
+    "accuracy": 0.8263888888888888,
+    "precision": 0.55,
+    "recall": 0.4074074074074074,
+    "f1": 0.46808510638297873,
+    "f2": 0.4296875,
+    "roc_auc": 0.8616650838873061,
+    "confusion_matrix": {
+      "true_negative": 108,
+      "false_positive": 9,
+      "false_negative": 16,
+      "true_positive": 11
+    },
+    "support": {
+      "negative": 117,
+      "positive": 27
+    }
+  },
+  "dataset": {
+    "path": "C:\\Users\\Prosper\\Documents\\AWS projects\\ai-health-supply-chain\\data\\synthetic_stockout_history.csv",
+    "sha256": "0ba3594e68ad98ff7715cc673885d71fc8fa25018e70cccf2dc411e5a5ab8dc1"
+  },
+  "selection_policy": "F2-first with a precision floor: choose the model and threshold with the highest validation F2 (recall weighted twice precision) among operating points whose precision is at least the configured floor; break ties on recall, then ROC-AUC. Accuracy is reported but is not the selection criterion.",
+  "selection_metric": "f2",
+  "limitations": [
+    "Trained only on synthetic data from ml/data_generation.py. Metrics describe this simulation, not real-world performance.",
+    "The simulation is deliberately simpler than a real supply chain: demand, lead times, and replenishment follow stylised distributions.",
+    "The threshold is chosen on a validation split and the test split is small, so the held-out metrics carry wide uncertainty.",
+    "Facility, region, and medicine are one-hot encoded. Unseen categories at inference are ignored and rely on numeric features.",
+    "Predicted probabilities are not calibrated for operational decision thresholds.",
+    "The model predicts a 30-day stockout indicator only. It does not recommend transfers and does not replace the deterministic rules.",
+    "Human review by an authorized supply-chain professional is required before any operational action."
+  ]
+}

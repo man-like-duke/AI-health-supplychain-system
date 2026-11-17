@@ -13,6 +13,10 @@ class DataValidationError(ValueError, SupplyChainError):
     """Raised when input data fails schema or quality checks."""
 
 
+class ModelNotAvailableError(SupplyChainError):
+    """Raised when the stockout model artifact cannot be loaded."""
+
+
 class LLMError(SupplyChainError):
     """Base class for explanation-layer errors."""
 

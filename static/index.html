@@ -176,6 +176,149 @@
         </p>
       </section>
 
+      <section class="panel panel-ml" aria-labelledby="ml-heading">
+        <div class="panel-header">
+          <div>
+            <h2 id="ml-heading">ML stockout prediction (30 days)</h2>
+            <p class="panel-subtitle">
+              Predictive evidence from a Scikit-learn model trained on
+              synthetic data. It is shown next to the deterministic
+              classification and never makes a decision.
+            </p>
+          </div>
+          <span class="badge badge-ml">ML evidence</span>
+        </div>
+        <form id="ml-form" class="ml-form">
+          <div class="control">
+            <label for="ml-facility">Facility</label>
+            <select id="ml-facility">
+              <option value="">Select a facility</option>
+            </select>
+          </div>
+          <div class="control">
+            <label for="ml-medicine">Medicine</label>
+            <select id="ml-medicine">
+              <option value="">Select a medicine</option>
+            </select>
+          </div>
+          <div class="control">
+            <label for="ml-current-stock">Current stock</label>
+            <input
+              id="ml-current-stock"
+              type="number"
+              min="0"
+              step="any"
+            />
+          </div>
+          <div class="control">
+            <label for="ml-monthly-consumption">
+              Monthly consumption
+            </label>
+            <input
+              id="ml-monthly-consumption"
+              type="number"
+              min="0.01"
+              step="any"
+            />
+          </div>
+          <div class="control">
+            <label for="ml-lead-time">Lead time (days)</label>
+            <input
+              id="ml-lead-time"
+              type="number"
+              min="0.01"
+              step="any"
+            />
+          </div>
+          <div class="control">
+            <label for="ml-expiry">Remaining shelf life (days)</label>
+            <input id="ml-expiry" type="number" min="0" step="any" />
+          </div>
+          <details class="ml-advanced">
+            <summary>Additional model inputs</summary>
+            <div class="ml-advanced-grid">
+              <div class="control">
+                <label for="ml-trend">
+                  Recent consumption trend (ratio)
+                </label>
+                <input
+                  id="ml-trend"
+                  type="number"
+                  min="0.01"
+                  max="5"
+                  step="0.01"
+                  value="1"
+                />
+              </div>
+              <div class="control">
+                <label for="ml-history">
+                  Stockouts in prior history
+                </label>
+                <input
+                  id="ml-history"
+                  type="number"
+                  min="0"
+                  max="60"
+                  step="1"
+                  value="0"
+                />
+              </div>
+              <div class="control">
+                <label for="ml-replenishment">
+                  Replenishments per month
+                </label>
+                <input
+                  id="ml-replenishment"
+                  type="number"
+                  min="0"
+                  max="30"
+                  step="0.1"
+                  value="1"
+                />
+              </div>
+              <div class="control">
+                <label for="ml-month">Month</label>
+                <select id="ml-month"></select>
+              </div>
+            </div>
+          </details>
+          <div class="ml-actions">
+            <button
+              id="ml-predict"
+              class="button button-primary"
+              type="submit"
+              disabled
+            >
+              Predict stockout risk
+            </button>
+            <span
+              id="ml-status"
+              class="status-line"
+              role="status"
+              aria-live="polite"
+            ></span>
+          </div>
+        </form>
+        <div id="ml-result" class="ml-result" hidden>
+          <article class="ml-card" data-kind="deterministic">
+            <h3>Deterministic risk</h3>
+            <div id="ml-deterministic-body"></div>
+          </article>
+          <article class="ml-card" data-kind="ml">
+            <h3>ML prediction</h3>
+            <div id="ml-prediction-body"></div>
+          </article>
+          <article class="ml-card" data-kind="decision">
+            <h3>Decision-support recommendation</h3>
+            <div id="ml-decision-body"></div>
+          </article>
+        </div>
+        <div id="ml-empty" class="empty-state">
+          Choose a facility and medicine to request a prediction.
+        </div>
+        <p id="ml-model-info" class="footnote"></p>
+      </section>
+
       <section class="panel" aria-labelledby="recommendation-heading">
         <div class="panel-header">
           <div>

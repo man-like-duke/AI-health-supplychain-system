@@ -1,0 +1,625 @@
+facility,region,medicine,month,current_stock,monthly_consumption,recent_consumption_trend,lead_time_days,historical_stockout_count,replenishment_frequency,expiry_days,avg_daily_consumption,days_of_stock,stockout_within_30_days
+Abuja Central,FCT,Artemisinin,2,233.8,153.2,0.547,14.3,3,2.09,144.9,5.11,45.8,0
+Abuja Central,FCT,Artemisinin,3,451.1,214.2,1.399,15.4,1,2.24,103.9,7.14,63.2,0
+Abuja Central,FCT,Artemisinin,4,331.0,231.3,1.08,14.5,1,3.35,127.7,7.71,42.9,0
+Abuja Central,FCT,Artemisinin,5,242.1,236.5,1.022,11.4,1,4.41,73.3,7.88,30.7,0
+Abuja Central,FCT,Artemisinin,6,226.2,227.8,0.963,13.5,0,2.38,66.0,7.59,29.8,0
+Abuja Central,FCT,Artemisinin,7,952.9,320.3,1.406,15.6,6,1.88,161.1,10.68,89.3,0
+Abuja Central,FCT,Artemisinin,8,447.0,239.3,0.747,15.7,1,2.24,156.9,7.98,56.0,0
+Abuja Central,FCT,Artemisinin,9,254.0,176.3,0.737,13.1,2,4.1,105.2,5.88,43.2,0
+Abuja Central,FCT,Artemisinin,10,514.8,294.0,1.668,11.1,2,2.31,91.5,9.8,52.5,0
+Abuja Central,FCT,Artemisinin,11,316.7,483.8,1.645,12.7,0,2.96,159.9,16.13,19.6,0
+Abuja Central,FCT,Artemisinin,12,597.9,160.7,0.5,14.6,1,1.39,92.3,5.36,111.6,0
+Abuja Central,FCT,Artemisinin,1,659.2,164.6,1.024,16.7,0,1.03,123.7,5.49,120.2,0
+Kaduna North,Kaduna,Artemisinin,9,693.9,312.5,1.042,21.8,1,1.14,39.0,10.42,66.6,0
+Kaduna North,Kaduna,Artemisinin,10,996.1,351.8,1.126,24.2,0,0.87,62.3,11.73,85.0,0
+Kaduna North,Kaduna,Artemisinin,11,240.7,399.1,1.135,22.2,0,0.8,52.5,13.3,18.1,0
+Kaduna North,Kaduna,Artemisinin,12,921.4,266.4,0.668,20.2,2,1.79,28.1,8.88,103.7,0
+Kaduna North,Kaduna,Artemisinin,1,479.7,295.2,1.108,16.7,1,1.66,29.6,9.84,48.8,0
+Kaduna North,Kaduna,Artemisinin,2,1746.2,298.8,1.012,14.5,1,1.45,30.3,9.96,175.3,0
+Kaduna North,Kaduna,Artemisinin,3,1139.3,207.2,0.693,23.4,1,1.51,60.9,6.91,165.0,0
+Kaduna North,Kaduna,Artemisinin,4,345.2,218.0,1.052,21.8,1,0.86,61.6,7.27,47.5,0
+Kaduna North,Kaduna,Artemisinin,5,759.3,219.5,1.007,24.1,0,1.61,61.7,7.32,103.8,0
+Kaduna North,Kaduna,Artemisinin,6,1208.3,317.5,1.447,23.5,0,0.97,60.4,10.58,114.2,0
+Kaduna North,Kaduna,Artemisinin,7,547.6,244.7,0.771,22.0,1,1.69,52.8,8.16,67.1,0
+Kaduna North,Kaduna,Artemisinin,8,589.5,220.3,0.9,19.1,0,1.65,61.6,7.34,80.3,0
+Kano West,Kano,Artemisinin,2,155.0,178.1,0.712,14.0,4,1.38,175.4,5.94,26.1,0
+Kano West,Kano,Artemisinin,3,158.6,314.1,1.764,13.7,6,1.11,221.5,10.47,15.2,1
+Kano West,Kano,Artemisinin,4,74.4,235.6,0.75,12.9,7,2.82,137.0,7.85,9.5,0
+Kano West,Kano,Artemisinin,5,67.4,401.9,1.706,13.5,6,2.26,219.3,13.4,5.0,1
+Kano West,Kano,Artemisinin,6,87.4,252.1,0.627,15.5,2,1.57,98.9,8.4,10.4,0
+Kano West,Kano,Artemisinin,7,63.3,183.6,0.728,15.9,7,1.12,118.3,6.12,10.3,1
+Kano West,Kano,Artemisinin,8,71.9,191.8,1.045,15.1,4,1.94,136.4,6.39,11.2,0
+Kano West,Kano,Artemisinin,9,63.9,272.1,1.419,14.6,7,2.5,147.5,9.07,7.0,1
+Kano West,Kano,Artemisinin,10,44.3,190.6,0.701,12.8,4,1.52,205.6,6.35,7.0,0
+Kano West,Kano,Artemisinin,11,104.5,324.5,1.702,19.9,4,1.66,217.1,10.82,9.7,1
+Kano West,Kano,Artemisinin,12,135.6,211.6,0.652,12.5,6,1.8,115.3,7.05,19.2,1
+Kano West,Kano,Artemisinin,1,81.4,264.1,1.248,14.9,5,1.76,99.5,8.8,9.2,1
+Lagos Mainland,Lagos,Artemisinin,12,1304.1,155.0,0.775,18.6,0,2.14,31.5,5.17,252.4,0
+Lagos Mainland,Lagos,Artemisinin,1,1752.6,114.7,0.74,19.3,0,2.25,28.4,3.82,458.5,0
+Lagos Mainland,Lagos,Artemisinin,2,1474.4,140.4,1.224,23.5,2,1.54,31.1,4.68,315.1,0
+Lagos Mainland,Lagos,Artemisinin,3,564.3,150.8,1.074,23.0,0,0.75,38.3,5.03,112.3,0
+Lagos Mainland,Lagos,Artemisinin,4,827.1,160.7,1.065,20.9,0,1.39,15.3,5.36,154.4,0
+Lagos Mainland,Lagos,Artemisinin,5,343.6,394.8,2.0,22.6,1,1.28,24.5,13.16,26.1,1
+Lagos Mainland,Lagos,Artemisinin,6,853.4,334.2,0.846,15.8,1,1.62,17.9,11.14,76.6,0
+Lagos Mainland,Lagos,Artemisinin,7,394.3,216.2,0.647,19.7,1,1.35,18.7,7.21,54.7,0
+Lagos Mainland,Lagos,Artemisinin,8,1631.8,159.5,0.737,19.6,1,1.36,31.9,5.32,307.0,0
+Lagos Mainland,Lagos,Artemisinin,9,1111.5,278.4,1.746,18.1,1,1.71,40.1,9.28,119.8,0
+Lagos Mainland,Lagos,Artemisinin,10,695.4,194.6,0.699,24.8,0,1.51,16.6,6.49,107.2,0
+Lagos Mainland,Lagos,Artemisinin,11,756.8,234.3,1.204,17.5,2,1.48,32.7,7.81,96.9,0
+Ibadan Central,Oyo,Artemisinin,3,266.0,264.5,0.945,19.8,5,2.41,116.8,8.82,30.2,0
+Ibadan Central,Oyo,Artemisinin,4,547.9,435.3,1.646,12.2,4,2.41,88.9,14.51,37.8,0
+Ibadan Central,Oyo,Artemisinin,5,259.5,438.6,1.008,16.1,6,3.22,60.3,14.62,17.7,0
+Ibadan Central,Oyo,Artemisinin,6,205.0,249.2,0.568,16.4,4,2.45,73.0,8.31,24.7,0
+Ibadan Central,Oyo,Artemisinin,7,239.4,356.7,1.432,11.4,4,2.77,113.6,11.89,20.1,1
+Ibadan Central,Oyo,Artemisinin,8,247.9,175.1,0.5,13.2,2,2.87,83.9,5.84,42.5,0
+Ibadan Central,Oyo,Artemisinin,9,507.5,335.9,1.918,12.4,1,1.07,90.2,11.2,45.3,0
+Ibadan Central,Oyo,Artemisinin,10,372.2,359.6,1.07,16.8,5,1.72,45.1,11.99,31.1,0
+Ibadan Central,Oyo,Artemisinin,11,227.7,180.7,0.503,13.4,2,3.44,76.3,6.02,37.8,0
+Ibadan Central,Oyo,Artemisinin,12,744.3,349.0,1.931,15.6,1,2.23,62.0,11.63,64.0,0
+Ibadan Central,Oyo,Artemisinin,1,674.6,155.5,0.5,14.1,1,1.29,48.2,5.18,130.1,0
+Ibadan Central,Oyo,Artemisinin,2,451.8,269.0,1.73,10.5,1,5.18,71.5,8.97,50.4,0
+Port Harcourt,Rivers,Artemisinin,6,173.0,351.6,1.172,17.0,6,1.46,32.2,11.72,14.8,1
+Port Harcourt,Rivers,Artemisinin,7,206.9,205.7,0.585,14.1,6,1.84,81.5,6.86,30.2,1
+Port Harcourt,Rivers,Artemisinin,8,143.1,184.6,0.897,14.0,4,2.41,45.9,6.15,23.3,0
+Port Harcourt,Rivers,Artemisinin,9,125.9,224.4,1.216,12.5,7,3.01,47.0,7.48,16.8,1
+Port Harcourt,Rivers,Artemisinin,10,177.7,562.1,2.0,14.6,2,1.9,51.2,18.74,9.5,1
+Port Harcourt,Rivers,Artemisinin,11,271.4,452.5,0.805,19.6,5,1.4,67.1,15.08,18.0,1
+Port Harcourt,Rivers,Artemisinin,12,246.7,325.2,0.719,16.0,4,2.11,43.8,10.84,22.8,0
+Port Harcourt,Rivers,Artemisinin,1,179.5,260.5,0.801,15.6,1,2.14,82.7,8.68,20.7,0
+Port Harcourt,Rivers,Artemisinin,2,311.1,367.3,1.41,12.0,5,1.93,61.9,12.24,25.4,0
+Port Harcourt,Rivers,Artemisinin,3,193.6,218.8,0.596,12.4,3,3.42,45.3,7.29,26.5,0
+Port Harcourt,Rivers,Artemisinin,4,214.5,245.1,1.12,10.3,2,2.84,54.7,8.17,26.3,0
+Port Harcourt,Rivers,Artemisinin,5,225.8,348.0,1.42,15.7,1,1.82,46.1,11.6,19.5,0
+Maiduguri,Borno,Artemisinin,1,224.8,198.5,0.992,38.7,2,0.88,104.1,6.62,34.0,0
+Maiduguri,Borno,Artemisinin,2,352.5,146.4,0.738,39.2,3,0.85,51.7,4.88,72.2,0
+Maiduguri,Borno,Artemisinin,3,84.6,262.6,1.793,25.8,0,1.39,105.4,8.75,9.7,1
+Maiduguri,Borno,Artemisinin,4,445.9,135.8,0.517,29.9,2,0.78,85.8,4.53,98.5,0
+Maiduguri,Borno,Artemisinin,5,494.2,143.1,1.054,26.3,2,1.87,100.3,4.77,103.6,0
+Maiduguri,Borno,Artemisinin,6,335.8,232.1,1.623,32.4,3,1.58,64.8,7.74,43.4,0
+Maiduguri,Borno,Artemisinin,7,161.4,237.3,1.022,28.0,5,1.67,93.2,7.91,20.4,0
+Maiduguri,Borno,Artemisinin,8,182.7,146.5,0.618,26.5,4,1.1,68.6,4.88,37.4,0
+Maiduguri,Borno,Artemisinin,9,224.0,205.0,1.399,30.6,2,0.7,78.7,6.83,32.8,0
+Maiduguri,Borno,Artemisinin,10,473.4,236.6,1.154,24.1,3,0.99,81.9,7.89,60.0,0
+Maiduguri,Borno,Artemisinin,11,207.8,237.5,1.004,34.3,3,0.81,109.8,7.92,26.2,1
+Maiduguri,Borno,Artemisinin,12,199.6,232.6,0.979,27.0,6,0.8,94.3,7.75,25.8,0
+Sokoto,Sokoto,Artemisinin,8,273.8,322.7,1.291,33.8,2,1.22,149.4,10.76,25.5,1
+Sokoto,Sokoto,Artemisinin,9,495.6,238.4,0.739,31.8,3,0.74,162.7,7.95,62.4,0
+Sokoto,Sokoto,Artemisinin,10,836.1,231.2,0.97,33.6,1,0.88,62.5,7.71,108.5,0
+Sokoto,Sokoto,Artemisinin,11,380.2,144.9,0.627,25.5,2,1.49,119.4,4.83,78.7,0
+Sokoto,Sokoto,Artemisinin,12,252.2,169.1,1.167,33.0,3,0.68,65.1,5.64,44.7,0
+Sokoto,Sokoto,Artemisinin,1,436.5,310.5,1.836,25.8,0,1.11,105.4,10.35,42.2,0
+Sokoto,Sokoto,Artemisinin,2,314.5,306.8,0.988,29.5,0,1.03,142.0,10.23,30.8,1
+Sokoto,Sokoto,Artemisinin,3,879.9,223.8,0.729,28.3,2,0.79,135.2,7.46,118.0,0
+Sokoto,Sokoto,Artemisinin,4,446.6,259.7,1.161,31.5,3,1.34,69.2,8.66,51.6,0
+Sokoto,Sokoto,Artemisinin,5,206.2,245.8,0.946,30.7,2,0.55,76.8,8.19,25.2,1
+Sokoto,Sokoto,Artemisinin,6,378.8,285.0,1.16,24.8,5,1.04,66.3,9.5,39.9,0
+Sokoto,Sokoto,Artemisinin,7,251.4,332.7,1.167,35.1,2,0.43,126.6,11.09,22.7,0
+Abuja Central,FCT,Amoxicillin,3,1149.3,334.2,0.835,10.8,2,1.87,137.1,11.14,103.2,0
+Abuja Central,FCT,Amoxicillin,4,647.1,260.1,0.778,15.7,1,3.28,165.3,8.67,74.6,0
+Abuja Central,FCT,Amoxicillin,5,1023.1,232.7,0.895,12.0,1,2.73,203.5,7.76,131.9,0
+Abuja Central,FCT,Amoxicillin,6,1688.3,403.5,1.734,14.1,1,2.12,112.2,13.45,125.5,0
+Abuja Central,FCT,Amoxicillin,7,933.0,446.5,1.107,11.8,1,1.75,138.7,14.88,62.7,0
+Abuja Central,FCT,Amoxicillin,8,2754.5,619.4,1.387,13.5,0,1.9,144.2,20.65,133.4,0
+Abuja Central,FCT,Amoxicillin,9,1066.4,661.8,1.068,12.2,0,2.31,128.2,22.06,48.3,0
+Abuja Central,FCT,Amoxicillin,10,2107.1,854.5,1.291,17.4,1,2.16,124.6,28.48,74.0,0
+Abuja Central,FCT,Amoxicillin,11,2108.1,353.8,0.5,17.5,0,1.49,123.9,11.79,178.8,0
+Abuja Central,FCT,Amoxicillin,12,1588.8,387.4,1.095,12.7,0,1.7,122.9,12.91,123.0,0
+Abuja Central,FCT,Amoxicillin,1,1128.1,296.4,0.765,13.2,1,3.87,102.2,9.88,114.2,0
+Abuja Central,FCT,Amoxicillin,2,1191.7,389.1,1.313,13.2,0,2.17,131.7,12.97,91.9,0
+Kaduna North,Kaduna,Amoxicillin,7,191.2,451.4,1.003,19.1,12,1.16,116.0,15.05,12.7,1
+Kaduna North,Kaduna,Amoxicillin,8,319.1,196.5,0.5,25.3,4,1.08,70.8,6.55,48.7,0
+Kaduna North,Kaduna,Amoxicillin,9,149.2,393.9,2.0,20.0,1,2.29,111.7,13.13,11.4,1
+Kaduna North,Kaduna,Amoxicillin,10,335.3,512.8,1.302,23.6,4,2.22,109.6,17.09,19.6,1
+Kaduna North,Kaduna,Amoxicillin,11,158.9,460.4,0.898,21.1,2,1.97,118.9,15.35,10.4,1
+Kaduna North,Kaduna,Amoxicillin,12,133.7,451.0,0.98,26.2,5,0.9,146.0,15.03,8.9,1
+Kaduna North,Kaduna,Amoxicillin,1,150.0,460.4,1.021,19.6,3,1.81,125.0,15.35,9.8,1
+Kaduna North,Kaduna,Amoxicillin,2,352.8,398.5,0.866,21.1,7,1.16,112.1,13.28,26.6,0
+Kaduna North,Kaduna,Amoxicillin,3,148.8,455.1,1.142,19.9,5,1.2,126.7,15.17,9.8,1
+Kaduna North,Kaduna,Amoxicillin,4,404.9,501.2,1.102,23.9,5,1.36,102.0,16.71,24.2,0
+Kaduna North,Kaduna,Amoxicillin,5,102.0,490.4,0.978,22.8,6,1.74,123.6,16.35,6.2,1
+Kaduna North,Kaduna,Amoxicillin,6,116.4,398.4,0.813,19.6,0,1.49,137.3,13.28,8.8,1
+Kano West,Kano,Amoxicillin,4,1295.4,358.6,1.195,22.5,0,1.12,46.3,11.95,108.4,0
+Kano West,Kano,Amoxicillin,5,3375.3,195.5,0.545,20.4,0,1.74,33.8,6.52,517.9,0
+Kano West,Kano,Amoxicillin,6,1363.9,153.8,0.787,20.2,0,1.17,51.8,5.13,266.1,0
+Kano West,Kano,Amoxicillin,7,2749.1,343.7,2.0,25.3,0,1.19,24.2,11.46,240.0,0
+Kano West,Kano,Amoxicillin,8,3851.6,270.5,0.787,20.6,0,1.38,35.4,9.02,427.2,0
+Kano West,Kano,Amoxicillin,9,3375.2,357.6,1.322,16.1,0,1.63,23.2,11.92,283.1,0
+Kano West,Kano,Amoxicillin,10,647.6,175.7,0.5,16.7,0,1.76,51.5,5.86,110.6,0
+Kano West,Kano,Amoxicillin,11,1388.6,217.4,1.238,21.5,0,0.75,34.8,7.25,191.6,0
+Kano West,Kano,Amoxicillin,12,2264.4,620.8,2.0,23.0,0,1.17,34.3,20.69,109.4,0
+Kano West,Kano,Amoxicillin,1,1167.2,630.8,1.016,19.8,0,1.59,44.9,21.03,55.5,0
+Kano West,Kano,Amoxicillin,2,1720.8,471.7,0.748,16.3,0,1.14,34.3,15.72,109.4,0
+Kano West,Kano,Amoxicillin,3,2118.7,322.6,0.684,21.4,0,3.1,53.4,10.75,197.1,0
+Lagos Mainland,Lagos,Amoxicillin,6,1021.8,570.8,1.631,14.7,2,2.32,80.7,19.03,53.7,0
+Lagos Mainland,Lagos,Amoxicillin,7,519.0,278.1,0.5,15.4,0,1.42,67.0,9.27,56.0,0
+Lagos Mainland,Lagos,Amoxicillin,8,371.9,432.1,1.554,15.1,0,2.92,80.4,14.4,25.8,0
+Lagos Mainland,Lagos,Amoxicillin,9,1079.9,337.7,0.782,15.0,2,4.55,45.3,11.26,95.9,0
+Lagos Mainland,Lagos,Amoxicillin,10,352.5,296.7,0.878,16.1,3,2.03,62.9,9.89,35.6,0
+Lagos Mainland,Lagos,Amoxicillin,11,698.0,395.1,1.332,16.1,0,2.53,66.7,13.17,53.0,0
+Lagos Mainland,Lagos,Amoxicillin,12,1421.4,321.9,0.815,13.8,1,1.78,31.9,10.73,132.5,0
+Lagos Mainland,Lagos,Amoxicillin,1,1207.6,280.1,0.87,13.7,2,2.96,52.8,9.34,129.3,0
+Lagos Mainland,Lagos,Amoxicillin,2,808.1,298.9,1.067,15.2,0,1.81,72.2,9.96,81.1,0
+Lagos Mainland,Lagos,Amoxicillin,3,1049.1,344.2,1.152,15.3,1,1.9,77.2,11.47,91.4,0
+Lagos Mainland,Lagos,Amoxicillin,4,907.8,448.2,1.302,13.7,0,1.69,72.4,14.94,60.8,0
+Lagos Mainland,Lagos,Amoxicillin,5,1129.8,324.7,0.725,15.8,3,1.71,78.0,10.82,104.4,0
+Ibadan Central,Oyo,Amoxicillin,1,272.4,472.7,1.182,13.1,1,1.98,158.8,15.76,17.3,1
+Ibadan Central,Oyo,Amoxicillin,2,465.5,591.1,1.25,15.3,1,1.84,135.7,19.7,23.6,0
+Ibadan Central,Oyo,Amoxicillin,3,589.7,454.4,0.769,17.0,2,0.9,137.6,15.15,38.9,0
+Ibadan Central,Oyo,Amoxicillin,4,617.1,316.0,0.695,15.0,0,3.63,237.0,10.53,58.6,0
+Ibadan Central,Oyo,Amoxicillin,5,389.1,438.2,1.387,13.9,5,2.87,225.5,14.61,26.6,1
+Ibadan Central,Oyo,Amoxicillin,6,335.0,300.4,0.686,15.2,4,1.82,197.3,10.01,33.5,0
+Ibadan Central,Oyo,Amoxicillin,7,361.5,230.9,0.769,15.3,6,3.01,212.3,7.7,47.0,0
+Ibadan Central,Oyo,Amoxicillin,8,517.2,210.6,0.912,12.3,4,2.68,113.7,7.02,73.7,0
+Ibadan Central,Oyo,Amoxicillin,9,990.1,239.6,1.138,11.1,3,3.05,243.8,7.99,124.0,0
+Ibadan Central,Oyo,Amoxicillin,10,443.8,483.1,2.0,12.8,7,2.44,110.6,16.1,27.6,0
+Ibadan Central,Oyo,Amoxicillin,11,414.8,392.3,0.812,9.4,2,3.01,173.7,13.08,31.7,0
+Ibadan Central,Oyo,Amoxicillin,12,539.5,681.3,1.736,14.0,0,2.14,114.8,22.71,23.8,1
+Enugu,Enugu,Amoxicillin,2,389.5,687.0,1.718,20.7,3,2.04,65.5,22.9,17.0,0
+Enugu,Enugu,Amoxicillin,3,561.4,520.6,0.758,17.5,2,1.35,112.4,17.35,32.4,0
+Enugu,Enugu,Amoxicillin,4,229.2,898.5,1.726,20.6,1,1.3,84.2,29.95,7.7,1
+Enugu,Enugu,Amoxicillin,5,416.9,260.0,0.5,22.1,3,1.14,98.1,8.67,48.1,0
+Enugu,Enugu,Amoxicillin,6,960.5,285.6,1.099,27.9,3,0.81,72.6,9.52,100.9,0
+Enugu,Enugu,Amoxicillin,7,508.5,488.5,1.71,15.9,1,2.32,104.8,16.28,31.2,0
+Enugu,Enugu,Amoxicillin,8,501.1,282.5,0.578,22.1,3,0.7,92.2,9.42,53.2,0
+Enugu,Enugu,Amoxicillin,9,571.1,328.1,1.162,25.3,0,1.39,125.0,10.94,52.2,0
+Enugu,Enugu,Amoxicillin,10,609.5,258.6,0.788,18.2,1,1.55,97.4,8.62,70.7,0
+Enugu,Enugu,Amoxicillin,11,473.6,592.4,2.0,18.6,1,2.32,117.6,19.75,24.0,0
+Enugu,Enugu,Amoxicillin,12,357.5,384.5,0.649,23.7,1,1.11,119.9,12.82,27.9,1
+Enugu,Enugu,Amoxicillin,1,397.4,448.9,1.167,26.7,7,1.27,75.6,14.96,26.6,0
+Benin City,Edo,Amoxicillin,9,420.2,646.2,1.292,15.7,5,1.54,53.9,21.54,19.5,0
+Benin City,Edo,Amoxicillin,10,960.7,449.4,0.695,14.3,3,2.34,54.7,14.98,64.1,0
+Benin City,Edo,Amoxicillin,11,410.6,740.5,1.648,12.0,2,2.54,53.9,24.68,16.6,0
+Benin City,Edo,Amoxicillin,12,752.3,984.9,1.33,14.6,3,1.39,60.2,32.83,22.9,1
+Benin City,Edo,Amoxicillin,1,442.9,285.7,0.5,15.2,6,2.08,27.8,9.52,46.5,0
+Benin City,Edo,Amoxicillin,2,1142.5,532.3,1.863,11.0,4,1.28,35.8,17.74,64.4,0
+Benin City,Edo,Amoxicillin,3,533.6,408.8,0.768,11.5,2,2.7,39.7,13.63,39.2,0
+Benin City,Edo,Amoxicillin,4,797.3,647.7,1.585,14.7,2,2.06,60.6,21.59,36.9,0
+Benin City,Edo,Amoxicillin,5,1247.4,271.2,0.5,17.8,3,1.57,32.6,9.04,138.0,0
+Benin City,Edo,Amoxicillin,6,429.6,883.2,2.0,17.4,7,1.19,58.0,29.44,14.6,0
+Benin City,Edo,Amoxicillin,7,1058.2,582.2,0.659,16.0,0,1.46,27.7,19.41,54.5,0
+Benin City,Edo,Amoxicillin,8,322.6,413.9,0.711,14.2,1,1.84,30.1,13.8,23.4,0
+Maiduguri,Borno,Amoxicillin,11,1322.1,173.5,0.578,39.1,3,0.62,67.7,5.78,228.6,0
+Maiduguri,Borno,Amoxicillin,12,951.6,182.6,1.053,32.5,3,0.57,41.0,6.09,156.3,0
+Maiduguri,Borno,Amoxicillin,1,825.2,299.3,1.639,27.8,2,0.6,41.3,9.98,82.7,0
+Maiduguri,Borno,Amoxicillin,2,403.6,302.9,1.012,33.3,3,1.11,58.7,10.1,40.0,0
+Maiduguri,Borno,Amoxicillin,3,583.2,386.5,1.276,29.5,1,1.01,42.0,12.88,45.3,0
+Maiduguri,Borno,Amoxicillin,4,513.3,229.3,0.593,32.7,4,0.95,64.3,7.64,67.1,0
+Maiduguri,Borno,Amoxicillin,5,313.7,310.3,1.353,30.8,3,1.25,76.0,10.34,30.3,1
+Maiduguri,Borno,Amoxicillin,6,419.2,288.8,0.931,33.2,1,0.97,43.5,9.63,43.5,0
+Maiduguri,Borno,Amoxicillin,7,384.5,300.8,1.042,27.2,2,1.06,62.6,10.03,38.3,0
+Maiduguri,Borno,Amoxicillin,8,573.4,402.9,1.339,28.6,0,0.65,50.6,13.43,42.7,0
+Maiduguri,Borno,Amoxicillin,9,417.8,411.9,1.023,35.3,1,1.71,64.1,13.73,30.4,0
+Maiduguri,Borno,Amoxicillin,10,605.4,322.8,0.784,30.7,2,1.08,31.3,10.76,56.3,0
+Abuja Central,FCT,ORS,10,698.4,344.4,1.148,7.6,1,4.39,62.9,11.48,60.8,0
+Abuja Central,FCT,ORS,11,1102.5,236.9,0.688,6.5,1,3.65,85.7,7.9,139.6,0
+Abuja Central,FCT,ORS,12,1175.5,216.5,0.914,6.7,1,5.38,103.7,7.22,162.9,0
+Abuja Central,FCT,ORS,1,871.5,246.6,1.139,6.4,0,8.0,68.0,8.22,106.0,0
+Abuja Central,FCT,ORS,2,2143.4,328.6,1.333,7.3,2,5.08,138.5,10.95,195.7,0
+Abuja Central,FCT,ORS,3,753.6,245.8,0.748,7.1,1,5.18,77.1,8.19,92.0,0
+Abuja Central,FCT,ORS,4,1553.7,231.6,0.942,7.0,1,4.67,59.7,7.72,201.3,0
+Abuja Central,FCT,ORS,5,1915.3,117.0,0.505,6.7,0,3.2,133.7,3.9,491.0,0
+Abuja Central,FCT,ORS,6,629.5,219.8,1.878,6.9,1,4.25,134.1,7.33,85.9,0
+Abuja Central,FCT,ORS,7,911.3,322.0,1.465,8.5,0,4.4,92.7,10.73,84.9,0
+Abuja Central,FCT,ORS,8,683.9,240.1,0.746,8.6,0,4.31,136.5,8.0,85.5,0
+Abuja Central,FCT,ORS,9,1887.8,312.6,1.302,7.6,0,4.81,59.9,10.42,181.2,0
+Kaduna North,Kaduna,ORS,5,81.1,375.0,1.071,8.9,6,4.06,51.1,12.5,6.5,0
+Kaduna North,Kaduna,ORS,6,110.5,258.9,0.69,7.2,0,6.61,65.4,8.63,12.8,0
+Kaduna North,Kaduna,ORS,7,138.3,341.1,1.317,6.4,2,5.04,64.3,11.37,12.2,1
+Kaduna North,Kaduna,ORS,8,212.0,539.0,1.58,8.6,4,3.04,69.8,17.97,11.8,1
+Kaduna North,Kaduna,ORS,9,152.7,438.2,0.813,6.0,3,5.1,36.8,14.61,10.5,0
+Kaduna North,Kaduna,ORS,10,89.7,321.3,0.733,6.1,3,4.43,59.2,10.71,8.4,0
+Kaduna North,Kaduna,ORS,11,305.4,817.7,2.0,6.7,2,1.9,48.5,27.26,11.2,1
+Kaduna North,Kaduna,ORS,12,367.5,479.2,0.586,9.1,8,2.31,62.8,15.97,23.0,0
+Kaduna North,Kaduna,ORS,1,277.9,416.8,0.87,6.7,9,3.55,50.0,13.89,20.0,0
+Kaduna North,Kaduna,ORS,2,211.5,284.8,0.683,7.0,6,4.55,75.3,9.49,22.3,0
+Kaduna North,Kaduna,ORS,3,290.7,267.9,0.94,7.3,5,4.28,70.7,8.93,32.6,0
+Kaduna North,Kaduna,ORS,4,112.6,369.1,1.378,6.3,1,5.02,74.3,12.3,9.2,1
+Kano West,Kano,ORS,12,4320.0,283.3,0.944,17.6,0,1.37,41.4,9.44,457.5,0
+Kano West,Kano,ORS,1,2435.0,209.0,0.738,14.4,0,3.63,22.3,6.97,349.5,0
+Kano West,Kano,ORS,2,2631.0,236.5,1.132,13.0,0,2.74,32.5,7.88,333.7,0
+Kano West,Kano,ORS,3,1973.8,383.8,1.623,15.4,1,2.97,23.6,12.79,154.3,0
+Kano West,Kano,ORS,4,1925.1,251.4,0.655,13.8,0,3.98,24.9,8.38,229.8,0
+Kano West,Kano,ORS,5,2061.5,358.0,1.424,13.8,0,1.77,24.2,11.93,172.7,0
+Kano West,Kano,ORS,6,1478.6,183.6,0.513,14.0,0,1.28,19.6,6.12,241.6,0
+Kano West,Kano,ORS,7,1817.3,441.3,2.0,13.6,0,2.55,40.8,14.71,123.6,0
+Kano West,Kano,ORS,8,1531.0,309.5,0.701,12.3,0,2.14,27.7,10.32,148.4,0
+Kano West,Kano,ORS,9,1694.8,212.5,0.686,14.7,0,3.66,31.2,7.08,239.3,0
+Kano West,Kano,ORS,10,1582.5,213.5,1.005,15.2,0,1.42,38.7,7.12,222.3,0
+Kano West,Kano,ORS,11,3393.3,282.5,1.323,12.4,0,2.37,35.6,9.42,360.3,0
+Lagos Mainland,Lagos,ORS,3,504.2,199.1,0.995,7.0,1,4.2,107.5,6.64,76.0,0
+Lagos Mainland,Lagos,ORS,4,680.4,222.0,1.115,8.1,1,2.84,130.1,7.4,91.9,0
+Lagos Mainland,Lagos,ORS,5,454.0,187.1,0.843,6.7,3,5.55,138.0,6.24,72.8,0
+Lagos Mainland,Lagos,ORS,6,1337.8,355.7,1.901,6.2,0,4.91,148.4,11.86,112.8,0
+Lagos Mainland,Lagos,ORS,7,700.2,266.7,0.75,6.2,0,4.16,105.4,8.89,78.8,0
+Lagos Mainland,Lagos,ORS,8,396.4,198.4,0.744,6.1,0,4.94,141.0,6.61,59.9,0
+Lagos Mainland,Lagos,ORS,9,321.3,356.9,1.798,6.3,1,5.1,73.4,11.9,27.0,0
+Lagos Mainland,Lagos,ORS,10,302.6,232.0,0.65,8.0,0,3.81,103.3,7.73,39.1,0
+Lagos Mainland,Lagos,ORS,11,464.5,272.4,1.174,7.2,2,4.0,115.0,9.08,51.2,0
+Lagos Mainland,Lagos,ORS,12,309.3,215.3,0.79,6.9,2,5.32,98.0,7.18,43.1,0
+Lagos Mainland,Lagos,ORS,1,589.1,128.2,0.596,7.0,1,4.58,162.8,4.27,137.8,0
+Lagos Mainland,Lagos,ORS,2,1132.2,207.6,1.619,6.6,1,4.44,126.8,6.92,163.6,0
+Ibadan Central,Oyo,ORS,11,854.7,191.0,0.764,7.4,3,3.73,80.5,6.37,134.2,0
+Ibadan Central,Oyo,ORS,12,438.7,259.6,1.359,8.4,1,4.2,83.3,8.65,50.7,0
+Ibadan Central,Oyo,ORS,1,346.3,278.7,1.074,7.5,1,3.32,51.8,9.29,37.3,0
+Ibadan Central,Oyo,ORS,2,558.8,248.0,0.89,7.4,0,2.29,111.1,8.27,67.6,0
+Ibadan Central,Oyo,ORS,3,565.9,308.8,1.245,6.9,1,5.54,57.5,10.29,55.0,0
+Ibadan Central,Oyo,ORS,4,582.1,348.1,1.127,9.3,1,3.98,107.1,11.6,50.2,0
+Ibadan Central,Oyo,ORS,5,370.2,270.3,0.777,6.8,2,3.76,81.8,9.01,41.1,0
+Ibadan Central,Oyo,ORS,6,543.5,246.3,0.911,9.2,3,2.81,91.0,8.21,66.2,0
+Ibadan Central,Oyo,ORS,7,449.3,225.0,0.914,7.2,0,3.27,120.9,7.5,59.9,0
+Ibadan Central,Oyo,ORS,8,326.0,212.9,0.946,6.5,0,5.54,125.9,7.1,45.9,0
+Ibadan Central,Oyo,ORS,9,464.8,180.0,0.845,10.0,2,4.88,103.3,6.0,77.5,0
+Ibadan Central,Oyo,ORS,10,828.2,189.6,1.054,6.6,3,4.62,53.9,6.32,131.0,0
+Port Harcourt,Rivers,ORS,4,223.1,323.7,1.079,6.4,3,2.8,25.9,10.79,20.7,0
+Port Harcourt,Rivers,ORS,5,108.5,583.5,1.803,7.4,4,5.49,54.3,19.45,5.6,0
+Port Harcourt,Rivers,ORS,6,141.4,446.3,0.765,8.1,12,4.35,26.7,14.88,9.5,0
+Port Harcourt,Rivers,ORS,7,231.0,432.3,0.969,6.8,6,5.48,57.9,14.41,16.0,0
+Port Harcourt,Rivers,ORS,8,149.7,628.5,1.454,7.3,2,3.43,62.9,20.95,7.1,1
+Port Harcourt,Rivers,ORS,9,153.0,366.3,0.583,7.0,7,4.63,27.1,12.21,12.5,1
+Port Harcourt,Rivers,ORS,10,147.0,241.6,0.66,10.8,1,2.98,52.2,8.05,18.3,0
+Port Harcourt,Rivers,ORS,11,79.3,165.5,0.685,6.5,5,3.99,28.2,5.52,14.4,1
+Port Harcourt,Rivers,ORS,12,158.9,300.2,1.814,7.8,8,7.21,57.7,10.01,15.9,0
+Port Harcourt,Rivers,ORS,1,67.5,248.7,0.828,6.1,4,5.48,47.1,8.29,8.1,0
+Port Harcourt,Rivers,ORS,2,218.4,159.5,0.641,6.2,4,7.24,42.5,5.32,41.1,0
+Port Harcourt,Rivers,ORS,3,129.0,287.5,1.803,7.9,3,3.82,48.0,9.58,13.5,1
+Maiduguri,Borno,ORS,5,161.1,228.4,0.761,15.1,3,2.42,48.8,7.61,21.2,0
+Maiduguri,Borno,ORS,6,76.7,320.8,1.405,12.2,5,2.09,63.8,10.69,7.2,1
+Maiduguri,Borno,ORS,7,31.2,273.7,0.853,11.9,6,2.72,31.4,9.12,3.4,1
+Maiduguri,Borno,ORS,8,147.4,190.5,0.696,16.0,4,1.67,64.9,6.35,23.2,1
+Maiduguri,Borno,ORS,9,69.1,290.7,1.525,13.0,4,1.28,77.5,9.69,7.1,0
+Maiduguri,Borno,ORS,10,107.8,210.6,0.725,18.1,8,1.51,40.6,7.02,15.4,1
+Maiduguri,Borno,ORS,11,115.2,186.0,0.883,12.0,7,2.62,64.2,6.2,18.6,0
+Maiduguri,Borno,ORS,12,64.8,290.8,1.564,13.2,2,2.17,49.7,9.69,6.7,1
+Maiduguri,Borno,ORS,1,118.1,310.5,1.068,12.7,5,1.98,33.6,10.35,11.4,1
+Maiduguri,Borno,ORS,2,79.0,281.1,0.905,14.4,2,1.64,70.5,9.37,8.4,1
+Maiduguri,Borno,ORS,3,136.2,441.3,1.57,13.7,3,2.0,79.3,14.71,9.3,1
+Maiduguri,Borno,ORS,4,142.9,368.2,0.834,14.1,5,1.92,37.6,12.27,11.6,1
+Sokoto,Sokoto,ORS,9,368.2,220.1,0.88,25.1,1,1.91,102.8,7.34,50.2,0
+Sokoto,Sokoto,ORS,10,316.2,228.5,1.038,40.2,3,0.4,61.8,7.62,41.5,0
+Sokoto,Sokoto,ORS,11,354.3,286.4,1.254,34.4,0,0.82,55.8,9.55,37.1,0
+Sokoto,Sokoto,ORS,12,555.1,258.5,0.902,41.7,1,0.59,102.3,8.62,64.4,0
+Sokoto,Sokoto,ORS,1,1200.0,175.5,0.679,25.8,0,1.24,86.0,5.85,205.1,0
+Sokoto,Sokoto,ORS,2,318.2,410.4,2.0,27.2,2,1.19,47.1,13.68,23.3,0
+Sokoto,Sokoto,ORS,3,229.0,129.3,0.5,28.8,2,1.83,60.4,4.31,53.1,0
+Sokoto,Sokoto,ORS,4,374.6,342.6,2.0,28.9,1,1.7,63.0,11.42,32.8,0
+Sokoto,Sokoto,ORS,5,252.4,194.1,0.567,27.7,2,1.16,52.1,6.47,39.0,0
+Sokoto,Sokoto,ORS,6,554.6,221.1,1.139,29.8,4,0.95,58.9,7.37,75.2,0
+Sokoto,Sokoto,ORS,7,552.4,254.7,1.152,39.0,1,0.95,98.9,8.49,65.1,0
+Sokoto,Sokoto,ORS,8,560.6,119.9,0.5,23.1,0,1.26,97.8,4.0,140.3,0
+Abuja Central,FCT,Paracetamol,5,2033.6,447.0,0.894,16.0,3,2.45,115.9,14.9,136.5,0
+Abuja Central,FCT,Paracetamol,6,1526.7,364.0,0.814,16.5,0,1.08,135.1,12.13,125.8,0
+Abuja Central,FCT,Paracetamol,7,3600.0,630.2,1.731,13.5,1,3.48,240.1,21.01,171.4,0
+Abuja Central,FCT,Paracetamol,8,1526.0,278.3,0.5,9.6,0,3.74,152.5,9.28,164.5,0
+Abuja Central,FCT,Paracetamol,9,1146.5,558.4,2.0,15.5,1,3.16,198.7,18.61,61.6,0
+Abuja Central,FCT,Paracetamol,10,2793.9,699.6,1.253,17.7,1,0.93,146.4,23.32,119.8,0
+Abuja Central,FCT,Paracetamol,11,1443.7,701.8,1.003,13.7,2,2.01,250.0,23.39,61.7,0
+Abuja Central,FCT,Paracetamol,12,1984.2,343.3,0.5,16.7,1,2.42,187.6,11.44,173.4,0
+Abuja Central,FCT,Paracetamol,1,1604.2,472.9,1.377,13.5,5,2.21,154.7,15.76,101.8,0
+Abuja Central,FCT,Paracetamol,2,1521.8,518.1,1.096,13.9,2,1.71,187.8,17.27,88.1,0
+Abuja Central,FCT,Paracetamol,3,2992.6,215.5,0.5,12.6,0,2.23,94.7,7.18,416.6,0
+Abuja Central,FCT,Paracetamol,4,2620.3,1024.8,2.0,14.6,0,1.53,144.0,34.16,76.7,0
+Kaduna North,Kaduna,Paracetamol,11,962.1,492.9,0.986,19.9,1,0.96,69.0,16.43,58.6,0
+Kaduna North,Kaduna,Paracetamol,12,472.9,572.2,1.161,17.7,1,2.36,57.3,19.07,24.8,0
+Kaduna North,Kaduna,Paracetamol,1,568.7,711.9,1.244,16.7,4,1.29,94.9,23.73,24.0,0
+Kaduna North,Kaduna,Paracetamol,2,273.1,497.3,0.699,24.5,2,2.09,100.3,16.58,16.5,0
+Kaduna North,Kaduna,Paracetamol,3,408.4,483.5,0.972,17.0,1,1.58,104.4,16.12,25.3,1
+Kaduna North,Kaduna,Paracetamol,4,622.9,602.4,1.246,27.1,4,1.46,95.0,20.08,31.0,0
+Kaduna North,Kaduna,Paracetamol,5,618.4,413.8,0.687,17.4,2,1.85,99.3,13.79,44.8,0
+Kaduna North,Kaduna,Paracetamol,6,481.9,310.6,0.751,22.5,3,0.71,48.4,10.35,46.5,0
+Kaduna North,Kaduna,Paracetamol,7,1680.0,617.2,1.987,20.4,1,1.58,45.5,20.57,81.7,0
+Kaduna North,Kaduna,Paracetamol,8,402.1,580.0,0.94,27.4,1,1.42,96.7,19.33,20.8,1
+Kaduna North,Kaduna,Paracetamol,9,1201.5,689.8,1.189,22.1,2,2.28,45.6,22.99,52.3,0
+Kaduna North,Kaduna,Paracetamol,10,613.5,577.6,0.837,16.9,1,2.02,94.1,19.25,31.9,0
+Kano West,Kano,Paracetamol,7,1601.8,534.3,1.069,18.2,4,0.93,32.0,17.81,89.9,0
+Kano West,Kano,Paracetamol,8,1046.5,392.3,0.734,18.1,3,1.97,81.5,13.08,80.0,0
+Kano West,Kano,Paracetamol,9,1680.0,412.0,1.05,19.6,4,1.21,38.2,13.73,122.3,0
+Kano West,Kano,Paracetamol,10,892.0,359.6,0.873,17.8,2,1.31,32.4,11.99,74.4,0
+Kano West,Kano,Paracetamol,11,1581.8,535.8,1.49,23.2,3,0.88,47.8,17.86,88.6,0
+Kano West,Kano,Paracetamol,12,496.1,318.0,0.593,21.7,3,1.02,74.8,10.6,46.8,0
+Kano West,Kano,Paracetamol,1,309.8,410.2,1.29,18.9,3,2.62,70.4,13.67,22.7,1
+Kano West,Kano,Paracetamol,2,527.5,573.8,1.399,21.0,1,1.05,32.1,19.13,27.6,0
+Kano West,Kano,Paracetamol,3,469.1,551.9,0.962,18.3,6,2.34,55.0,18.4,25.5,0
+Kano West,Kano,Paracetamol,4,285.0,611.0,1.107,26.9,2,0.92,72.0,20.37,14.0,1
+Kano West,Kano,Paracetamol,5,641.8,465.2,0.761,22.5,4,1.63,77.3,15.51,41.4,0
+Kano West,Kano,Paracetamol,6,556.1,434.7,0.935,23.9,2,1.51,54.9,14.49,38.4,0
+Lagos Mainland,Lagos,Paracetamol,2,863.5,764.1,1.273,12.8,1,1.71,134.4,25.47,33.9,0
+Lagos Mainland,Lagos,Paracetamol,3,691.8,494.8,0.648,14.1,1,3.33,100.4,16.49,41.9,0
+Lagos Mainland,Lagos,Paracetamol,4,1015.9,634.2,1.282,15.6,4,1.94,162.4,21.14,48.1,0
+Lagos Mainland,Lagos,Paracetamol,5,815.1,682.6,1.076,13.2,5,1.79,115.2,22.75,35.8,0
+Lagos Mainland,Lagos,Paracetamol,6,912.3,442.6,0.648,15.3,2,2.03,143.9,14.75,61.8,0
+Lagos Mainland,Lagos,Paracetamol,7,359.5,774.8,1.751,12.9,1,2.45,164.7,25.83,13.9,1
+Lagos Mainland,Lagos,Paracetamol,8,2014.6,488.2,0.63,17.1,1,2.15,69.3,16.27,123.8,0
+Lagos Mainland,Lagos,Paracetamol,9,781.7,1228.5,2.0,15.7,1,2.13,76.5,40.95,19.1,1
+Lagos Mainland,Lagos,Paracetamol,10,1245.8,707.9,0.576,10.7,2,1.33,139.1,23.6,52.8,0
+Lagos Mainland,Lagos,Paracetamol,11,1160.8,582.2,0.822,14.8,4,1.73,98.4,19.41,59.8,0
+Lagos Mainland,Lagos,Paracetamol,12,2160.0,783.1,1.345,18.1,3,2.13,166.8,26.1,82.7,0
+Lagos Mainland,Lagos,Paracetamol,1,985.6,538.9,0.688,13.7,1,2.29,109.1,17.96,54.9,0
+Ibadan Central,Oyo,Paracetamol,6,949.3,365.8,0.732,13.2,0,2.14,37.5,12.19,77.8,0
+Ibadan Central,Oyo,Paracetamol,7,586.5,649.2,1.775,16.0,2,2.15,64.6,21.64,27.1,0
+Ibadan Central,Oyo,Paracetamol,8,1389.8,408.1,0.629,15.1,3,2.68,72.5,13.6,102.2,0
+Ibadan Central,Oyo,Paracetamol,9,530.5,534.6,1.31,18.0,2,1.43,49.3,17.82,29.8,1
+Ibadan Central,Oyo,Paracetamol,10,809.2,453.8,0.849,15.8,3,1.61,67.6,15.13,53.5,0
+Ibadan Central,Oyo,Paracetamol,11,1163.1,514.6,1.134,13.6,3,2.04,79.0,17.15,67.8,0
+Ibadan Central,Oyo,Paracetamol,12,579.5,548.6,1.066,9.6,3,2.25,77.3,18.29,31.7,0
+Ibadan Central,Oyo,Paracetamol,1,378.7,445.0,0.811,13.7,5,2.35,53.6,14.83,25.5,0
+Ibadan Central,Oyo,Paracetamol,2,648.4,560.5,1.26,15.4,3,2.04,56.7,18.68,34.7,0
+Ibadan Central,Oyo,Paracetamol,3,549.2,648.2,1.156,15.5,4,1.61,77.2,21.61,25.4,0
+Ibadan Central,Oyo,Paracetamol,4,1442.3,397.7,0.614,15.9,0,2.04,30.3,13.26,108.8,0
+Ibadan Central,Oyo,Paracetamol,5,1253.7,293.8,0.739,12.8,2,3.31,69.8,9.79,128.0,0
+Enugu,Enugu,Paracetamol,10,415.1,232.8,0.517,23.6,2,1.82,124.3,7.76,53.5,0
+Enugu,Enugu,Paracetamol,11,430.8,459.3,1.973,21.2,9,0.99,88.0,15.31,28.1,0
+Enugu,Enugu,Paracetamol,12,190.5,345.2,0.752,24.2,1,1.03,118.4,11.51,16.6,0
+Enugu,Enugu,Paracetamol,1,427.4,577.1,1.672,21.2,3,1.8,49.7,19.24,22.2,0
+Enugu,Enugu,Paracetamol,2,261.7,325.7,0.564,20.9,5,1.48,113.2,10.86,24.1,1
+Enugu,Enugu,Paracetamol,3,365.8,339.1,1.041,22.6,3,0.63,115.9,11.3,32.4,0
+Enugu,Enugu,Paracetamol,4,444.1,490.0,1.445,20.1,2,1.22,73.3,16.33,27.2,0
+Enugu,Enugu,Paracetamol,5,308.7,581.4,1.187,22.2,2,1.11,72.8,19.38,15.9,0
+Enugu,Enugu,Paracetamol,6,280.3,539.4,0.928,19.2,2,1.71,87.8,17.98,15.6,0
+Enugu,Enugu,Paracetamol,7,410.1,474.1,0.879,22.5,7,1.04,74.0,15.8,26.0,1
+Enugu,Enugu,Paracetamol,8,245.3,488.3,1.03,19.0,1,1.53,120.0,16.28,15.1,1
+Enugu,Enugu,Paracetamol,9,274.9,481.5,0.986,22.2,3,1.69,84.5,16.05,17.1,1
+Jos,Plateau,Paracetamol,8,579.0,441.9,1.105,30.6,6,0.98,31.3,14.73,39.3,0
+Jos,Plateau,Paracetamol,9,1066.3,414.3,0.937,38.2,4,0.63,77.8,13.81,77.2,0
+Jos,Plateau,Paracetamol,10,710.0,416.6,1.006,28.6,4,1.31,81.9,13.89,51.1,0
+Jos,Plateau,Paracetamol,11,230.4,523.8,1.257,28.0,3,0.97,33.3,17.46,13.2,0
+Jos,Plateau,Paracetamol,12,1375.6,438.4,0.837,31.8,1,1.08,39.1,14.61,94.1,0
+Jos,Plateau,Paracetamol,1,628.5,413.6,0.943,26.7,1,1.39,36.5,13.79,45.6,0
+Jos,Plateau,Paracetamol,2,1054.9,242.2,0.585,25.3,2,1.13,60.6,8.07,130.7,0
+Jos,Plateau,Paracetamol,3,752.9,317.3,1.31,32.3,2,1.12,76.2,10.58,71.2,0
+Jos,Plateau,Paracetamol,4,1440.0,577.7,1.821,27.6,0,1.49,32.9,19.26,74.8,0
+Jos,Plateau,Paracetamol,5,538.0,726.7,1.258,28.4,4,1.19,39.4,24.22,22.2,0
+Jos,Plateau,Paracetamol,6,802.9,386.3,0.532,24.2,3,1.47,42.6,12.88,62.4,0
+Jos,Plateau,Paracetamol,7,591.3,338.5,0.876,29.8,1,0.77,59.6,11.28,52.4,0
+Port Harcourt,Rivers,Paracetamol,6,436.6,1338.0,2.0,17.6,1,2.0,68.3,44.6,9.8,1
+Port Harcourt,Rivers,Paracetamol,7,385.4,754.0,0.563,19.6,5,1.64,92.0,25.13,15.3,1
+Port Harcourt,Rivers,Paracetamol,8,277.0,533.4,0.708,17.0,1,1.43,82.4,17.78,15.6,1
+Port Harcourt,Rivers,Paracetamol,9,383.3,608.4,1.141,17.9,5,1.32,55.9,20.28,18.9,1
+Port Harcourt,Rivers,Paracetamol,10,548.1,511.7,0.841,13.3,4,3.01,97.3,17.06,32.1,0
+Port Harcourt,Rivers,Paracetamol,11,329.6,324.8,0.635,10.5,3,2.72,45.5,10.83,30.4,0
+Port Harcourt,Rivers,Paracetamol,12,537.9,468.2,1.442,14.4,4,1.66,42.0,15.61,34.5,0
+Port Harcourt,Rivers,Paracetamol,1,418.6,500.4,1.069,11.2,1,2.98,71.4,16.68,25.1,0
+Port Harcourt,Rivers,Paracetamol,2,1105.0,936.9,1.872,13.7,3,2.15,88.3,31.23,35.4,0
+Port Harcourt,Rivers,Paracetamol,3,384.0,932.8,0.996,14.6,0,1.32,58.9,31.09,12.3,1
+Port Harcourt,Rivers,Paracetamol,4,1200.0,470.9,0.505,13.6,0,3.5,38.1,15.7,76.4,0
+Port Harcourt,Rivers,Paracetamol,5,528.7,466.6,0.991,15.6,1,2.53,71.9,15.55,34.0,0
+Kaduna North,Kaduna,Metformin,11,860.4,495.4,1.651,21.1,2,1.29,74.1,16.51,52.1,0
+Kaduna North,Kaduna,Metformin,12,760.0,369.4,0.746,16.8,2,2.65,142.7,12.31,61.7,0
+Kaduna North,Kaduna,Metformin,1,854.9,348.7,0.944,16.1,2,2.18,63.7,11.62,73.5,0
+Kaduna North,Kaduna,Metformin,2,325.3,349.8,1.003,21.8,0,1.46,76.7,11.66,27.9,0
+Kaduna North,Kaduna,Metformin,3,1068.4,383.3,1.096,25.4,1,1.36,151.4,12.78,83.6,0
+Kaduna North,Kaduna,Metformin,4,624.5,273.3,0.713,26.5,2,1.35,106.8,9.11,68.6,0
+Kaduna North,Kaduna,Metformin,5,669.0,366.2,1.34,21.0,1,1.06,91.8,12.21,54.8,0
+Kaduna North,Kaduna,Metformin,6,483.4,255.2,0.697,21.8,1,1.54,101.5,8.51,56.8,0
+Kaduna North,Kaduna,Metformin,7,491.4,194.1,0.761,20.4,4,0.89,143.4,6.47,76.0,0
+Kaduna North,Kaduna,Metformin,8,854.9,189.7,0.978,21.3,2,1.28,113.2,6.32,135.2,0
+Kaduna North,Kaduna,Metformin,9,303.7,234.5,1.236,22.6,0,1.31,81.2,7.82,38.9,0
+Kaduna North,Kaduna,Metformin,10,434.6,147.5,0.629,18.8,1,1.16,104.9,4.92,88.4,0
+Kano West,Kano,Metformin,6,291.9,292.7,0.836,18.2,3,0.9,109.9,9.76,29.9,1
+Kano West,Kano,Metformin,7,703.1,327.3,1.118,23.4,1,1.42,125.0,10.91,64.4,0
+Kano West,Kano,Metformin,8,476.5,319.1,0.975,22.9,0,1.4,116.2,10.64,44.8,0
+Kano West,Kano,Metformin,9,279.6,169.0,0.53,17.2,1,2.31,86.8,5.63,49.6,0
+Kano West,Kano,Metformin,10,343.6,361.2,2.0,17.2,2,2.31,66.0,12.04,28.5,0
+Kano West,Kano,Metformin,11,939.9,346.7,0.96,22.8,4,1.6,64.1,11.56,81.3,0
+Kano West,Kano,Metformin,12,454.6,313.1,0.903,21.0,1,2.15,106.3,10.44,43.6,0
+Kano West,Kano,Metformin,1,363.0,415.6,1.328,23.1,1,1.14,61.4,13.85,26.2,1
+Kano West,Kano,Metformin,2,299.6,321.4,0.773,27.1,10,1.41,65.2,10.71,28.0,0
+Kano West,Kano,Metformin,3,429.5,380.7,1.184,20.8,4,1.1,59.6,12.69,33.9,0
+Kano West,Kano,Metformin,4,198.5,336.2,0.883,20.2,3,1.52,105.3,11.21,17.7,1
+Kano West,Kano,Metformin,5,602.9,245.7,0.731,22.3,6,2.11,69.7,8.19,73.6,0
+Lagos Mainland,Lagos,Metformin,10,827.4,221.9,0.74,10.1,0,3.56,193.8,7.4,111.9,0
+Lagos Mainland,Lagos,Metformin,11,536.0,320.4,1.444,16.5,0,2.47,170.3,10.68,50.2,0
+Lagos Mainland,Lagos,Metformin,12,420.6,265.0,0.827,14.4,1,2.12,199.3,8.83,47.6,0
+Lagos Mainland,Lagos,Metformin,1,725.3,274.1,1.035,13.2,0,1.78,78.8,9.14,79.4,0
+Lagos Mainland,Lagos,Metformin,2,859.2,277.0,1.01,11.5,0,1.53,130.7,9.23,93.1,0
+Lagos Mainland,Lagos,Metformin,3,1078.8,238.5,0.861,15.5,3,1.55,75.0,7.95,135.7,0
+Lagos Mainland,Lagos,Metformin,4,618.3,202.1,0.847,11.6,1,5.03,125.3,6.74,91.8,0
+Lagos Mainland,Lagos,Metformin,5,649.4,290.7,1.439,15.3,0,2.65,175.0,9.69,67.0,0
+Lagos Mainland,Lagos,Metformin,6,383.4,274.9,0.946,16.6,1,1.88,151.1,9.16,41.8,0
+Lagos Mainland,Lagos,Metformin,7,473.7,501.7,1.825,11.4,3,2.62,133.4,16.72,28.3,0
+Lagos Mainland,Lagos,Metformin,8,1245.8,334.1,0.666,20.0,0,1.35,161.9,11.14,111.9,0
+Lagos Mainland,Lagos,Metformin,9,781.4,278.0,0.832,12.6,2,3.35,133.3,9.27,84.3,0
+Ibadan Central,Oyo,Metformin,9,181.3,120.5,0.5,13.4,3,4.39,31.8,4.02,45.1,0
+Ibadan Central,Oyo,Metformin,10,207.2,426.4,2.0,10.6,2,2.08,54.2,14.21,14.6,1
+Ibadan Central,Oyo,Metformin,11,366.3,424.0,0.994,16.5,1,1.2,31.3,14.13,25.9,1
+Ibadan Central,Oyo,Metformin,12,101.4,385.3,0.909,12.0,3,3.22,80.9,12.84,7.9,1
+Ibadan Central,Oyo,Metformin,1,353.9,386.0,1.002,14.9,7,1.62,74.5,12.87,27.5,0
+Ibadan Central,Oyo,Metformin,2,193.4,442.3,1.146,14.9,4,2.33,62.3,14.74,13.1,1
+Ibadan Central,Oyo,Metformin,3,226.3,256.2,0.579,14.0,4,1.98,42.5,8.54,26.5,0
+Ibadan Central,Oyo,Metformin,4,334.0,426.2,1.664,17.0,5,0.73,64.0,14.21,23.5,1
+Ibadan Central,Oyo,Metformin,5,318.0,248.2,0.582,12.0,3,3.27,54.4,8.27,38.4,0
+Ibadan Central,Oyo,Metformin,6,389.5,338.9,1.366,15.2,4,2.46,61.6,11.3,34.5,0
+Ibadan Central,Oyo,Metformin,7,302.7,252.6,0.745,14.0,1,2.24,80.5,8.42,35.9,0
+Ibadan Central,Oyo,Metformin,8,224.4,191.6,0.759,10.9,3,3.26,65.6,6.39,35.1,0
+Benin City,Edo,Metformin,12,277.1,282.4,0.941,21.2,2,0.99,125.4,9.41,29.4,1
+Benin City,Edo,Metformin,1,261.3,376.8,1.334,22.7,4,1.73,50.7,12.56,20.8,0
+Benin City,Edo,Metformin,2,202.9,259.0,0.687,18.8,2,1.95,106.1,8.63,23.5,0
+Benin City,Edo,Metformin,3,273.2,141.7,0.547,18.4,2,1.02,87.1,4.72,57.9,0
+Benin City,Edo,Metformin,4,449.0,319.0,2.0,23.0,2,1.71,107.7,10.63,42.2,0
+Benin City,Edo,Metformin,5,112.6,344.6,1.08,18.3,3,1.62,56.2,11.49,9.8,0
+Benin City,Edo,Metformin,6,288.7,237.9,0.69,19.3,3,1.31,48.6,7.93,36.4,0
+Benin City,Edo,Metformin,7,140.0,226.8,0.954,14.9,2,2.0,99.8,7.56,18.5,0
+Benin City,Edo,Metformin,8,195.2,277.6,1.224,24.3,6,1.09,51.0,9.25,21.1,1
+Benin City,Edo,Metformin,9,154.9,496.7,1.789,22.6,6,1.88,120.1,16.56,9.4,1
+Benin City,Edo,Metformin,10,196.3,347.4,0.699,15.8,4,2.16,62.2,11.58,17.0,0
+Benin City,Edo,Metformin,11,194.1,278.9,0.803,16.8,1,1.68,111.6,9.3,20.9,0
+Sokoto,Sokoto,Metformin,4,545.6,518.2,2.0,32.6,5,1.29,81.4,17.27,31.6,1
+Sokoto,Sokoto,Metformin,5,470.6,260.5,0.503,27.9,2,1.51,42.1,8.68,54.2,0
+Sokoto,Sokoto,Metformin,6,673.3,250.0,0.96,30.8,2,0.79,67.9,8.33,80.8,0
+Sokoto,Sokoto,Metformin,7,477.2,310.5,1.242,28.0,3,1.18,91.1,10.35,46.1,0
+Sokoto,Sokoto,Metformin,8,421.5,415.1,1.337,23.6,3,1.31,92.3,13.84,30.5,0
+Sokoto,Sokoto,Metformin,9,569.9,170.5,0.5,37.3,1,0.62,95.2,5.68,100.3,0
+Sokoto,Sokoto,Metformin,10,442.1,160.2,0.94,29.3,8,1.62,50.1,5.34,82.8,0
+Sokoto,Sokoto,Metformin,11,558.5,242.9,1.516,25.4,0,0.9,102.6,8.1,69.0,0
+Sokoto,Sokoto,Metformin,12,274.3,141.6,0.583,24.8,2,0.96,51.1,4.72,58.1,0
+Sokoto,Sokoto,Metformin,1,447.7,207.8,1.468,29.0,1,1.03,48.4,6.93,64.6,0
+Sokoto,Sokoto,Metformin,2,505.4,275.1,1.324,24.6,1,1.44,74.4,9.17,55.1,0
+Sokoto,Sokoto,Metformin,3,314.9,259.5,0.943,37.0,2,0.66,101.9,8.65,36.4,0
+Abuja Central,FCT,Metformin,5,474.8,300.0,0.857,16.1,4,1.94,96.0,10.0,47.5,0
+Abuja Central,FCT,Metformin,6,311.1,441.0,1.47,15.6,4,2.25,107.2,14.7,21.2,0
+Abuja Central,FCT,Metformin,7,235.5,375.0,0.85,12.4,2,1.61,52.3,12.5,18.8,1
+Abuja Central,FCT,Metformin,8,246.5,220.7,0.589,10.5,1,2.11,79.1,7.36,33.5,0
+Abuja Central,FCT,Metformin,9,116.1,340.7,1.543,8.9,3,2.62,117.9,11.36,10.2,0
+Abuja Central,FCT,Metformin,10,333.5,461.2,1.354,14.4,2,2.27,94.0,15.37,21.7,1
+Abuja Central,FCT,Metformin,11,312.2,270.5,0.586,16.6,4,2.13,69.0,9.02,34.6,0
+Abuja Central,FCT,Metformin,12,365.4,384.7,1.422,12.8,3,1.54,121.1,12.82,28.5,0
+Abuja Central,FCT,Metformin,1,283.2,435.5,1.132,12.2,2,2.91,88.1,14.52,19.5,1
+Abuja Central,FCT,Metformin,2,131.4,320.9,0.737,14.4,3,2.34,117.0,10.7,12.3,1
+Abuja Central,FCT,Metformin,3,236.4,299.4,0.933,11.4,3,3.11,68.4,9.98,23.7,1
+Abuja Central,FCT,Metformin,4,301.9,454.2,1.517,17.2,6,2.33,64.4,15.14,19.9,0
+Abuja Central,FCT,Insulin,2,138.9,111.5,0.929,12.7,5,2.2,76.4,3.72,37.4,0
+Abuja Central,FCT,Insulin,3,64.4,133.8,1.2,10.8,1,2.63,59.3,4.46,14.4,0
+Abuja Central,FCT,Insulin,4,407.8,140.5,1.051,11.4,0,4.11,55.7,4.68,87.0,0
+Abuja Central,FCT,Insulin,5,183.0,154.0,1.096,14.2,0,1.73,84.7,5.13,35.6,0
+Abuja Central,FCT,Insulin,6,178.8,102.3,0.664,15.7,2,1.72,91.9,3.41,52.4,0
+Abuja Central,FCT,Insulin,7,93.5,78.7,0.77,12.7,2,3.94,100.4,2.62,35.6,0
+Abuja Central,FCT,Insulin,8,199.4,104.5,1.327,12.4,1,2.22,92.6,3.48,57.3,0
+Abuja Central,FCT,Insulin,9,274.1,133.0,1.273,14.4,1,2.4,50.7,4.43,61.8,0
+Abuja Central,FCT,Insulin,10,105.6,126.5,0.952,13.9,3,1.78,73.5,4.22,25.0,0
+Abuja Central,FCT,Insulin,11,229.2,156.6,1.237,14.9,1,2.12,85.4,5.22,43.9,0
+Abuja Central,FCT,Insulin,12,362.3,96.8,0.618,13.6,2,2.66,88.5,3.23,112.3,0
+Abuja Central,FCT,Insulin,1,252.0,119.3,1.232,15.8,3,1.27,81.4,3.98,63.4,0
+Lagos Mainland,Lagos,Insulin,10,430.0,206.8,1.378,13.3,1,2.33,63.9,6.89,62.4,0
+Lagos Mainland,Lagos,Insulin,11,176.7,202.6,0.98,12.6,2,3.19,30.2,6.75,26.2,0
+Lagos Mainland,Lagos,Insulin,12,250.6,171.8,0.848,17.4,4,1.45,48.5,5.73,43.8,0
+Lagos Mainland,Lagos,Insulin,1,560.5,171.4,0.998,11.6,3,1.61,60.3,5.71,98.1,0
+Lagos Mainland,Lagos,Insulin,2,152.7,90.4,0.527,12.1,0,3.97,76.5,3.01,50.7,0
+Lagos Mainland,Lagos,Insulin,3,185.3,168.8,1.868,10.8,3,2.87,45.7,5.63,32.9,0
+Lagos Mainland,Lagos,Insulin,4,378.9,154.6,0.916,12.4,3,2.48,83.9,5.15,73.5,0
+Lagos Mainland,Lagos,Insulin,5,320.6,186.4,1.206,12.6,0,1.97,67.0,6.21,51.6,0
+Lagos Mainland,Lagos,Insulin,6,249.4,110.7,0.594,17.3,1,1.79,82.7,3.69,67.6,0
+Lagos Mainland,Lagos,Insulin,7,184.3,198.6,1.794,14.7,0,1.0,40.8,6.62,27.8,1
+Lagos Mainland,Lagos,Insulin,8,327.6,169.1,0.852,10.2,2,2.93,67.5,5.64,58.1,0
+Lagos Mainland,Lagos,Insulin,9,364.6,113.2,0.669,13.4,0,2.34,72.7,3.77,96.6,0
+Port Harcourt,Rivers,Insulin,5,133.1,133.7,1.114,27.4,5,0.8,69.1,4.46,29.9,1
+Port Harcourt,Rivers,Insulin,6,70.7,84.8,0.634,20.7,2,1.06,78.0,2.83,25.0,1
+Port Harcourt,Rivers,Insulin,7,120.3,141.0,1.663,20.5,2,1.9,92.1,4.7,25.6,0
+Port Harcourt,Rivers,Insulin,8,62.6,160.4,1.137,23.0,4,0.86,101.7,5.35,11.7,1
+Port Harcourt,Rivers,Insulin,9,97.2,93.6,0.584,24.5,2,0.99,136.6,3.12,31.1,0
+Port Harcourt,Rivers,Insulin,10,137.4,220.2,2.0,20.7,6,2.19,115.0,7.34,18.7,1
+Port Harcourt,Rivers,Insulin,11,41.3,178.6,0.811,23.6,3,1.33,144.9,5.95,6.9,1
+Port Harcourt,Rivers,Insulin,12,76.7,131.6,0.737,19.7,5,1.06,163.9,4.39,17.5,1
+Port Harcourt,Rivers,Insulin,1,68.9,58.0,0.5,17.7,3,2.87,154.2,1.93,35.6,0
+Port Harcourt,Rivers,Insulin,2,70.9,112.4,1.936,21.2,3,0.51,100.8,3.75,18.9,1
+Port Harcourt,Rivers,Insulin,3,90.5,119.9,1.067,22.5,4,0.86,72.2,4.0,22.7,1
+Port Harcourt,Rivers,Insulin,4,216.0,178.2,1.487,16.5,3,1.56,99.7,5.94,36.4,0
+Jos,Plateau,Insulin,6,86.6,99.3,0.993,24.5,4,1.28,73.0,3.31,26.2,1
+Jos,Plateau,Insulin,7,97.3,100.1,1.008,25.3,4,1.11,81.6,3.34,29.2,1
+Jos,Plateau,Insulin,8,80.3,100.9,1.008,21.5,5,1.08,64.0,3.36,23.9,1
+Jos,Plateau,Insulin,9,120.1,119.2,1.182,20.8,2,1.56,48.7,3.97,30.2,0
+Jos,Plateau,Insulin,10,116.1,123.4,1.035,27.0,1,1.49,55.6,4.11,28.2,0
+Jos,Plateau,Insulin,11,164.4,96.7,0.784,18.5,1,2.11,126.0,3.22,51.0,0
+Jos,Plateau,Insulin,12,203.6,66.5,0.688,17.2,3,1.6,87.9,2.22,91.8,0
+Jos,Plateau,Insulin,1,76.1,90.9,1.366,22.4,1,1.37,125.7,3.03,25.1,0
+Jos,Plateau,Insulin,2,98.4,84.3,0.928,19.4,0,1.51,124.1,2.81,35.0,0
+Jos,Plateau,Insulin,3,180.7,77.5,0.919,27.8,1,0.89,85.0,2.58,69.9,0
+Jos,Plateau,Insulin,4,189.3,91.9,1.185,19.6,4,1.66,120.6,3.06,61.8,0
+Jos,Plateau,Insulin,5,98.6,125.4,1.365,19.6,2,2.03,64.3,4.18,23.6,1
+Maiduguri,Borno,Insulin,9,63.2,101.6,1.27,30.3,3,0.97,68.3,3.39,18.7,1
+Maiduguri,Borno,Insulin,10,104.7,59.7,0.587,34.7,3,1.11,48.7,1.99,52.6,0
+Maiduguri,Borno,Insulin,11,91.3,114.0,1.909,35.2,1,1.0,32.6,3.8,24.0,0
+Maiduguri,Borno,Insulin,12,82.2,120.4,1.057,30.7,3,1.05,78.8,4.01,20.5,0
+Maiduguri,Borno,Insulin,1,171.3,61.7,0.512,24.4,1,0.89,67.2,2.06,83.3,0
+Maiduguri,Borno,Insulin,2,96.2,72.5,1.175,26.7,0,0.84,31.7,2.42,39.8,0
+Maiduguri,Borno,Insulin,3,215.6,71.9,0.991,30.6,3,0.88,76.0,2.4,90.0,0
+Maiduguri,Borno,Insulin,4,62.6,103.8,1.444,25.2,2,0.81,60.0,3.46,18.1,0
+Maiduguri,Borno,Insulin,5,35.8,82.9,0.799,26.2,1,0.73,30.2,2.76,13.0,0
+Maiduguri,Borno,Insulin,6,74.5,89.0,1.073,33.8,3,0.86,56.0,2.97,25.1,0
+Maiduguri,Borno,Insulin,7,110.1,101.3,1.139,41.3,1,0.87,46.6,3.38,32.6,0
+Maiduguri,Borno,Insulin,8,179.0,48.1,0.5,36.1,2,0.73,41.7,1.6,111.6,0
+Kaduna North,Kaduna,Insulin,8,267.5,103.5,0.862,19.2,2,2.23,83.3,3.45,77.6,0
+Kaduna North,Kaduna,Insulin,9,110.8,108.5,1.049,21.3,6,1.34,71.3,3.62,30.6,0
+Kaduna North,Kaduna,Insulin,10,157.4,93.3,0.86,20.1,0,1.14,123.4,3.11,50.6,0
+Kaduna North,Kaduna,Insulin,11,135.2,71.7,0.769,23.7,0,1.37,163.9,2.39,56.5,0
+Kaduna North,Kaduna,Insulin,12,250.4,113.9,1.588,27.4,2,0.9,72.4,3.8,66.0,0
+Kaduna North,Kaduna,Insulin,1,287.7,109.8,0.964,23.1,3,1.69,107.3,3.66,78.6,0
+Kaduna North,Kaduna,Insulin,2,232.0,134.7,1.226,21.3,1,1.07,89.7,4.49,51.7,0
+Kaduna North,Kaduna,Insulin,3,425.7,107.5,0.798,16.2,3,1.36,148.5,3.58,118.8,0
+Kaduna North,Kaduna,Insulin,4,169.2,156.8,1.458,17.3,0,2.9,111.5,5.23,32.4,0
+Kaduna North,Kaduna,Insulin,5,207.2,70.1,0.5,24.2,3,1.79,63.8,2.34,88.6,0
+Kaduna North,Kaduna,Insulin,6,167.3,128.7,1.835,23.7,3,0.75,74.6,4.29,39.0,0
+Kaduna North,Kaduna,Insulin,7,131.1,104.3,0.81,25.8,1,1.26,114.6,3.48,37.7,0
+Kaduna North,Kaduna,Zinc sulfate,3,182.9,188.1,0.941,7.1,1,3.64,103.5,6.27,29.2,0
+Kaduna North,Kaduna,Zinc sulfate,4,311.5,149.9,0.797,8.3,1,2.49,53.4,5.0,62.3,0
+Kaduna North,Kaduna,Zinc sulfate,5,478.6,201.3,1.343,7.9,2,3.45,66.2,6.71,71.3,0
+Kaduna North,Kaduna,Zinc sulfate,6,315.8,217.6,1.081,7.7,2,2.44,71.6,7.25,43.5,0
+Kaduna North,Kaduna,Zinc sulfate,7,720.0,165.8,0.762,7.8,1,5.46,110.8,5.53,130.3,0
+Kaduna North,Kaduna,Zinc sulfate,8,299.9,208.5,1.258,7.8,1,3.47,119.1,6.95,43.2,0
+Kaduna North,Kaduna,Zinc sulfate,9,234.3,185.6,0.89,8.3,2,2.93,79.7,6.19,37.9,0
+Kaduna North,Kaduna,Zinc sulfate,10,133.3,161.2,0.869,6.6,2,5.48,74.1,5.37,24.8,0
+Kaduna North,Kaduna,Zinc sulfate,11,293.4,145.7,0.904,8.8,3,3.29,59.6,4.86,60.4,0
+Kaduna North,Kaduna,Zinc sulfate,12,204.6,201.7,1.384,8.4,1,4.47,77.3,6.72,30.4,0
+Kaduna North,Kaduna,Zinc sulfate,1,231.3,200.3,0.993,10.2,2,3.22,45.3,6.68,34.6,0
+Kaduna North,Kaduna,Zinc sulfate,2,421.5,170.4,0.851,7.8,0,2.59,95.4,5.68,74.2,0
+Kano West,Kano,Zinc sulfate,9,226.4,223.0,0.892,17.9,4,1.89,52.0,7.43,30.5,0
+Kano West,Kano,Zinc sulfate,10,324.3,163.0,0.731,14.1,0,1.81,49.4,5.43,59.7,0
+Kano West,Kano,Zinc sulfate,11,168.8,246.6,1.513,10.9,3,2.78,38.7,8.22,20.5,0
+Kano West,Kano,Zinc sulfate,12,154.7,420.5,1.705,16.4,5,1.82,78.8,14.02,11.0,1
+Kano West,Kano,Zinc sulfate,1,234.2,249.5,0.593,11.3,4,2.63,62.7,8.32,28.2,1
+Kano West,Kano,Zinc sulfate,2,420.0,277.8,1.113,10.9,1,2.17,77.0,9.26,45.4,0
+Kano West,Kano,Zinc sulfate,3,264.6,181.0,0.652,12.1,4,1.88,49.4,6.03,43.9,0
+Kano West,Kano,Zinc sulfate,4,190.4,216.8,1.198,16.3,1,1.18,46.7,7.23,26.4,1
+Kano West,Kano,Zinc sulfate,5,81.8,428.3,1.976,15.3,3,2.2,38.0,14.28,5.7,1
+Kano West,Kano,Zinc sulfate,6,115.0,321.0,0.749,12.8,2,4.16,33.4,10.7,10.7,0
+Kano West,Kano,Zinc sulfate,7,244.7,215.3,0.671,12.2,5,2.35,32.4,7.18,34.1,0
+Kano West,Kano,Zinc sulfate,8,341.3,249.5,1.159,15.6,4,2.06,68.3,8.32,41.0,0
+Ibadan Central,Oyo,Zinc sulfate,5,103.8,357.0,1.428,6.4,6,4.69,46.4,11.9,8.7,0
+Ibadan Central,Oyo,Zinc sulfate,6,80.5,427.1,1.196,7.4,5,7.6,58.5,14.24,5.7,1
+Ibadan Central,Oyo,Zinc sulfate,7,54.3,132.3,0.5,6.4,4,6.8,31.1,4.41,12.3,0
+Ibadan Central,Oyo,Zinc sulfate,8,216.0,274.0,2.0,6.1,3,4.56,60.8,9.13,23.7,0
+Ibadan Central,Oyo,Zinc sulfate,9,74.5,363.6,1.327,8.4,2,3.73,24.9,12.12,6.1,1
+Ibadan Central,Oyo,Zinc sulfate,10,62.3,271.5,0.747,9.2,4,3.98,33.0,9.05,6.9,1
+Ibadan Central,Oyo,Zinc sulfate,11,102.2,240.7,0.886,8.1,2,3.45,51.5,8.02,12.7,1
+Ibadan Central,Oyo,Zinc sulfate,12,65.9,235.5,0.979,7.1,6,6.11,60.9,7.85,8.4,1
+Ibadan Central,Oyo,Zinc sulfate,1,177.2,345.0,1.465,7.4,6,3.88,57.8,11.5,15.4,0
+Ibadan Central,Oyo,Zinc sulfate,2,60.4,237.5,0.688,7.9,12,4.9,61.0,7.92,7.6,1
+Ibadan Central,Oyo,Zinc sulfate,3,213.7,278.7,1.174,6.9,5,5.34,46.4,9.29,23.0,0
+Ibadan Central,Oyo,Zinc sulfate,4,56.7,192.0,0.689,7.9,3,5.42,41.3,6.4,8.9,1
+Enugu,Enugu,Zinc sulfate,2,83.5,280.1,1.4,6.5,3,4.73,36.2,9.34,8.9,1
+Enugu,Enugu,Zinc sulfate,3,82.2,228.4,0.815,8.0,2,3.83,53.2,7.61,10.8,0
+Enugu,Enugu,Zinc sulfate,4,62.8,165.3,0.724,6.2,5,5.21,43.7,5.51,11.4,1
+Enugu,Enugu,Zinc sulfate,5,108.6,194.1,1.174,6.5,4,7.29,80.6,6.47,16.8,1
+Enugu,Enugu,Zinc sulfate,6,216.0,181.6,0.936,7.2,8,3.99,33.2,6.05,35.7,0
+Enugu,Enugu,Zinc sulfate,7,96.0,229.6,1.264,6.6,2,7.7,78.5,7.65,12.5,0
+Enugu,Enugu,Zinc sulfate,8,77.2,93.1,0.5,5.5,3,4.47,71.7,3.1,24.9,0
+Enugu,Enugu,Zinc sulfate,9,100.9,205.4,2.0,7.4,3,2.89,66.8,6.85,14.7,1
+Enugu,Enugu,Zinc sulfate,10,61.3,255.1,1.242,7.9,2,4.11,33.1,8.5,7.2,0
+Enugu,Enugu,Zinc sulfate,11,94.4,228.6,0.896,6.9,2,3.54,83.3,7.62,12.4,0
+Enugu,Enugu,Zinc sulfate,12,92.2,226.4,0.99,6.7,4,6.51,36.0,7.55,12.2,0
+Enugu,Enugu,Zinc sulfate,1,107.9,228.5,1.009,6.9,6,4.39,75.7,7.62,14.2,0
+Uyo,Akwa Ibom,Zinc sulfate,2,161.3,165.6,0.828,12.0,1,3.22,31.3,5.52,29.2,0
+Uyo,Akwa Ibom,Zinc sulfate,3,97.2,179.9,1.086,13.9,4,2.11,35.7,6.0,16.2,0
+Uyo,Akwa Ibom,Zinc sulfate,4,95.3,225.5,1.254,16.0,1,1.54,15.7,7.52,12.7,0
+Uyo,Akwa Ibom,Zinc sulfate,5,121.4,179.6,0.796,12.1,3,2.78,15.8,5.99,20.3,0
+Uyo,Akwa Ibom,Zinc sulfate,6,351.2,266.2,1.482,12.8,3,2.35,38.6,8.87,39.6,0
+Uyo,Akwa Ibom,Zinc sulfate,7,81.8,189.8,0.713,12.3,3,2.26,36.9,6.33,12.9,1
+Uyo,Akwa Ibom,Zinc sulfate,8,115.1,297.4,1.567,17.6,8,3.46,16.7,9.91,11.6,1
+Uyo,Akwa Ibom,Zinc sulfate,9,126.9,213.8,0.719,19.8,4,1.89,29.7,7.13,17.8,1
+Uyo,Akwa Ibom,Zinc sulfate,10,191.0,261.0,1.221,14.4,5,1.47,30.5,8.7,22.0,0
+Uyo,Akwa Ibom,Zinc sulfate,11,287.4,97.9,0.5,14.3,3,2.3,26.4,3.26,88.0,0
+Uyo,Akwa Ibom,Zinc sulfate,12,95.7,140.0,1.429,16.3,6,1.29,18.1,4.67,20.5,0
+Uyo,Akwa Ibom,Zinc sulfate,1,159.7,129.6,0.926,9.8,3,2.96,39.1,4.32,37.0,0
+Abuja Central,FCT,Zinc sulfate,5,701.4,258.1,0.86,16.3,2,1.45,71.7,8.6,81.5,0
+Abuja Central,FCT,Zinc sulfate,6,301.0,199.3,0.772,15.2,3,2.89,131.1,6.64,45.3,0
+Abuja Central,FCT,Zinc sulfate,7,261.8,174.9,0.878,12.9,1,2.03,72.8,5.83,44.9,0
+Abuja Central,FCT,Zinc sulfate,8,428.6,380.2,2.0,14.1,2,1.91,139.8,12.67,33.8,0
+Abuja Central,FCT,Zinc sulfate,9,773.6,433.1,1.139,15.3,3,1.69,159.8,14.44,53.6,0
+Abuja Central,FCT,Zinc sulfate,10,319.4,285.7,0.66,12.9,7,3.04,86.6,9.52,33.5,0
+Abuja Central,FCT,Zinc sulfate,11,1008.0,265.7,0.93,12.4,1,1.96,120.6,8.86,113.8,0
+Abuja Central,FCT,Zinc sulfate,12,418.4,314.4,1.183,13.2,2,2.02,127.8,10.48,39.9,0
+Abuja Central,FCT,Zinc sulfate,1,377.2,205.2,0.653,10.2,4,2.3,134.3,6.84,55.1,0
+Abuja Central,FCT,Zinc sulfate,2,199.0,176.4,0.86,14.2,1,1.09,131.7,5.88,33.8,0
+Abuja Central,FCT,Zinc sulfate,3,607.0,423.9,2.0,13.9,3,1.69,153.3,14.13,43.0,0
+Abuja Central,FCT,Zinc sulfate,4,375.5,283.2,0.668,15.6,4,1.83,162.2,9.44,39.8,0
+Lagos Mainland,Lagos,Zinc sulfate,7,277.0,321.4,1.285,5.5,4,5.11,82.9,10.71,25.9,0
+Lagos Mainland,Lagos,Zinc sulfate,8,565.5,311.6,0.969,6.6,3,2.37,108.0,10.39,54.5,0
+Lagos Mainland,Lagos,Zinc sulfate,9,385.6,215.0,0.69,7.1,3,6.24,124.0,7.17,53.8,0
+Lagos Mainland,Lagos,Zinc sulfate,10,213.2,407.3,1.894,6.4,3,4.15,59.7,13.58,15.7,0
+Lagos Mainland,Lagos,Zinc sulfate,11,327.3,379.6,0.932,7.3,0,4.63,112.6,12.65,25.9,0
+Lagos Mainland,Lagos,Zinc sulfate,12,303.9,317.8,0.837,6.4,3,5.35,51.2,10.59,28.7,0
+Lagos Mainland,Lagos,Zinc sulfate,1,454.0,235.3,0.74,7.3,1,5.04,105.2,7.84,57.9,0
+Lagos Mainland,Lagos,Zinc sulfate,2,456.5,244.7,1.04,8.2,2,4.5,56.3,8.16,56.0,0
+Lagos Mainland,Lagos,Zinc sulfate,3,719.3,245.8,1.005,7.9,3,3.76,78.8,8.19,87.8,0
+Lagos Mainland,Lagos,Zinc sulfate,4,565.2,226.1,0.92,6.1,0,8.0,46.0,7.54,75.0,0
+Lagos Mainland,Lagos,Zinc sulfate,5,229.9,229.7,1.016,7.3,3,5.67,60.2,7.66,30.0,0
+Lagos Mainland,Lagos,Zinc sulfate,6,720.0,404.3,1.76,9.3,1,3.59,96.9,13.48,53.4,0

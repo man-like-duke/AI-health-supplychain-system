@@ -36,10 +36,10 @@ jobs:
         run: pip install -r requirements-dev.txt
 
       - name: Lint
-        run: ruff check src tests
+        run: ruff check src ml tests
 
       - name: Check formatting
-        run: ruff format --check src tests
+        run: ruff format --check src ml tests
 
       - name: Test
-        run: pytest --cov=src --cov-report=term-missing --cov-fail-under=90
+        run: pytest --cov=src --cov=ml --cov-report=term-missing --cov-fail-under=90

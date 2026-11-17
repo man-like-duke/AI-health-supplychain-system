@@ -13,6 +13,7 @@ const ENDPOINTS = {
   inventory: "/inventory",
   recommendations: "/recommendations",
   explanation: "/explanation",
+  predictStockout: "/predict-stockout",
 };
 
 const RISK_PRIORITY = {
@@ -81,6 +82,26 @@ function cacheElements() {
   els.explanationOutput = byId("explanation-output");
   els.explanationEmpty = byId("explanation-empty");
 
+  els.mlForm = byId("ml-form");
+  els.mlFacility = byId("ml-facility");
+  els.mlMedicine = byId("ml-medicine");
+  els.mlCurrentStock = byId("ml-current-stock");
+  els.mlMonthlyConsumption = byId("ml-monthly-consumption");
+  els.mlLeadTime = byId("ml-lead-time");
+  els.mlExpiry = byId("ml-expiry");
+  els.mlTrend = byId("ml-trend");
+  els.mlHistory = byId("ml-history");
+  els.mlReplenishment = byId("ml-replenishment");
+  els.mlMonth = byId("ml-month");
+  els.mlPredict = byId("ml-predict");
+  els.mlStatus = byId("ml-status");
+  els.mlResult = byId("ml-result");
+  els.mlEmpty = byId("ml-empty");
+  els.mlModelInfo = byId("ml-model-info");
+  els.mlDeterministicBody = byId("ml-deterministic-body");
+  els.mlPredictionBody = byId("ml-prediction-body");
+  els.mlDecisionBody = byId("ml-decision-body");
+
   els.governanceNote = byId("governance-note");
   els.assumptionsList = byId("assumptions-list");
 
@@ -126,6 +147,26 @@ function riskPriority(risk) {
 function clearNode(node) {
   node.replaceChildren();
 }
+
+const MONTH_NAMES = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+const probabilityFormat = new Intl.NumberFormat(undefined, {
+  style: "percent",
+  maximumFractionDigits: 1,
+});
 
 /* ------------------------------------------------------------------ */
 /* Filters and URL state                                               */
@@ -291,6 +332,317 @@ function getFilteredRecommendations() {
     }
     return true;
   });
+}
+
+/* ------------------------------------------------------------------ */
+/* ML prediction controls                                              */
+/* ------------------------------------------------------------------ */
+
+function populateMlControls() {
+  populateMonths();
+
+  const facilities = uniqueSorted(
+    state.inventory.map((item) => item.facility),
+  );
+  populateSelect(els.mlFacility, facilities);
+  populateMlMedicines();
+
+  els.mlPredict.disabled = !state.loaded;
+}
+
+function populateMonths() {
+  if (els.mlMonth.options.length > 0) {
+    return;
+  }
+
+  for (const [index, name] of MONTH_NAMES.entries()) {
+    const option = document.createElement("option");
+    option.value = String(index + 1);
+    option.textContent = name;
+    els.mlMonth.appendChild(option);
+  }
+
+  els.mlMonth.value = String(new Date().getMonth() + 1);
+}
+
+function populateMlMedicines() {
+  const facility = els.mlFacility.value;
+  const medicines = uniqueSorted(
+    state.inventory
+      .filter((item) => sameText(item.facility, facility))
+      .map((item) => item.medicine),
+  );
+
+  populateSelect(els.mlMedicine, medicines);
+  syncMlInputsFromSelection();
+}
+
+function findInventoryItem(facility, medicine) {
+  return state.inventory.find(
+    (item) =>
+      sameText(item.facility, facility) &&
+      sameText(item.medicine, medicine),
+  );
+}
+
+function syncMlInputsFromSelection() {
+  const item = findInventoryItem(
+    els.mlFacility.value,
+    els.mlMedicine.value,
+  );
+
+  if (!item) {
+    return;
+  }
+
+  els.mlCurrentStock.value = String(item.current_stock);
+  els.mlMonthlyConsumption.value = String(item.monthly_consumption);
+  els.mlLeadTime.value = String(item.lead_time_days);
+  els.mlExpiry.value = String(item.expiry_days);
+}
+
+/* ------------------------------------------------------------------ */
+/* ML prediction                                                       */
+/* ------------------------------------------------------------------ */
+
+function setPredictionStatus(message, isError = false) {
+  clearNode(els.mlStatus);
+  els.mlStatus.classList.toggle("is-error", isError);
+
+  if (!message) {
+    return;
+  }
+
+  if (!isError) {
+    const spinner = document.createElement("span");
+    spinner.className = "spinner";
+    spinner.setAttribute("aria-hidden", "true");
+    els.mlStatus.appendChild(spinner);
+  }
+
+  const text = document.createElement("span");
+  text.textContent = message;
+  els.mlStatus.appendChild(text);
+}
+
+function readNumber(input, label) {
+  const raw = String(input.value).trim();
+
+  if (raw === "") {
+    throw new Error(`${label} is required.`);
+  }
+
+  const value = Number(raw);
+
+  if (!Number.isFinite(value)) {
+    throw new Error(`${label} must be a number.`);
+  }
+
+  return value;
+}
+
+function buildPredictionPayload() {
+  const facility = els.mlFacility.value;
+  const medicine = els.mlMedicine.value;
+
+  if (!facility || !medicine) {
+    throw new Error("Choose a facility and medicine first.");
+  }
+
+  const region = state.facilityRegion.get(facility);
+
+  if (!region) {
+    throw new Error("Could not resolve the facility region.");
+  }
+
+  return {
+    facility,
+    medicine,
+    region,
+    current_stock: readNumber(els.mlCurrentStock, "Current stock"),
+    monthly_consumption: readNumber(
+      els.mlMonthlyConsumption,
+      "Monthly consumption",
+    ),
+    lead_time_days: readNumber(els.mlLeadTime, "Lead time"),
+    expiry_days: readNumber(els.mlExpiry, "Remaining shelf life"),
+    recent_consumption_trend: readNumber(
+      els.mlTrend,
+      "Recent consumption trend",
+    ),
+    historical_stockout_count: Math.round(
+      readNumber(els.mlHistory, "Historical stockout count"),
+    ),
+    replenishment_frequency: readNumber(
+      els.mlReplenishment,
+      "Replenishments per month",
+    ),
+    month: Number(els.mlMonth.value),
+  };
+}
+
+async function requestPrediction() {
+  let payload;
+
+  try {
+    payload = buildPredictionPayload();
+  } catch (error) {
+    setPredictionStatus(error.message, true);
+    return;
+  }
+
+  els.mlPredict.disabled = true;
+  const originalLabel = els.mlPredict.textContent;
+  els.mlPredict.textContent = "Predicting…";
+  setPredictionStatus("Requesting prediction…");
+
+  try {
+    const response = await fetch(ENDPOINTS.predictStockout, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      throw new Error(await describeError(response));
+    }
+
+    const data = await response.json();
+    renderPrediction(data);
+    setPredictionStatus("");
+  } catch (error) {
+    els.mlResult.hidden = true;
+    els.mlEmpty.hidden = false;
+    setPredictionStatus(error.message, true);
+  } finally {
+    els.mlPredict.disabled = !state.loaded;
+    els.mlPredict.textContent = originalLabel;
+  }
+}
+
+function appendText(parent, tag, text, className) {
+  const node = document.createElement(tag);
+  node.textContent = text;
+
+  if (className) {
+    node.className = className;
+  }
+
+  parent.appendChild(node);
+  return node;
+}
+
+function predictionLabel(data) {
+  return data.predicted_class === 1
+    ? "Stockout likely within 30 days"
+    : "No stockout expected within 30 days";
+}
+
+function renderPrediction(data) {
+  els.mlResult.hidden = false;
+  els.mlEmpty.hidden = true;
+
+  clearNode(els.mlDeterministicBody);
+  clearNode(els.mlPredictionBody);
+  clearNode(els.mlDecisionBody);
+
+  const reference = data.deterministic_reference;
+
+  if (reference) {
+    const chip = appendText(
+      els.mlDeterministicBody,
+      "span",
+      reference.stockout_risk,
+      "chip",
+    );
+    chip.dataset.risk = reference.stockout_risk;
+    appendText(
+      els.mlDeterministicBody,
+      "p",
+      `Days of stock ${formatDays(reference.days_of_stock)} · ` +
+        `lead time ${formatDays(reference.lead_time_days)}.`,
+    );
+    appendText(
+      els.mlDeterministicBody,
+      "p",
+      "Rule-based classification. It stays authoritative.",
+      "ml-card-note",
+    );
+  } else {
+    appendText(
+      els.mlDeterministicBody,
+      "p",
+      "No deterministic record matches this facility and medicine.",
+    );
+  }
+
+  const band = appendText(
+    els.mlPredictionBody,
+    "span",
+    `${data.probability_band} · ${probabilityFormat.format(data.probability)}`,
+    "chip",
+  );
+  band.dataset.risk = data.probability_band;
+  appendText(els.mlPredictionBody, "p", predictionLabel(data));
+  appendText(
+    els.mlPredictionBody,
+    "p",
+    `Decision threshold ${probabilityFormat.format(data.threshold)}. ` +
+      `Model ${data.model_id} v${data.model_version}.`,
+    "ml-card-note",
+  );
+
+  const mlFlagged = data.predicted_class === 1;
+  const deterministicRisk = reference ? reference.stockout_risk : null;
+  const deterministicFlagged =
+    deterministicRisk === "CRITICAL" || deterministicRisk === "HIGH";
+
+  let recommendation;
+
+  if (deterministicFlagged && mlFlagged) {
+    recommendation =
+      "Both the deterministic rules and the model flag this pair. " +
+      "Prioritize a human review of coverage, pending orders, and " +
+      "redistribution options.";
+  } else if (deterministicFlagged) {
+    recommendation =
+      "The deterministic rules flag this pair while the model does not. " +
+      "Keep the rule-based risk and verify whether local conditions " +
+      "explain the difference.";
+  } else if (mlFlagged) {
+    recommendation =
+      "The model flags this pair while the deterministic rules do not. " +
+      "Treat it as a prompt to review the inputs before acting.";
+  } else {
+    recommendation =
+      "Neither signal flags this pair. Continue routine monitoring.";
+  }
+
+  appendText(els.mlDecisionBody, "p", recommendation);
+  appendText(
+    els.mlDecisionBody,
+    "p",
+    "Decision support only: no order, transfer, or allocation is made " +
+      "automatically.",
+    "ml-card-note",
+  );
+
+  const governance = data.governance || {};
+  const notes = [];
+
+  if (governance.note) {
+    notes.push(governance.note);
+  }
+
+  if (Array.isArray(governance.limitations)) {
+    notes.push(...governance.limitations);
+  }
+
+  els.mlModelInfo.textContent = notes.join(" ");
 }
 
 /* ------------------------------------------------------------------ */
@@ -1024,6 +1376,7 @@ function setLoading(isLoading) {
   els.main.setAttribute("aria-busy", String(isLoading));
   els.refreshButton.disabled = isLoading;
   els.explainButton.disabled = isLoading || !state.loaded;
+  els.mlPredict.disabled = isLoading || !state.loaded;
 
   if (isLoading) {
     els.refreshButton.textContent = "Refreshing…";
@@ -1089,6 +1442,7 @@ async function loadData() {
     state.loaded = true;
 
     populateFilters();
+    populateMlControls();
     syncUrl();
     renderGovernance();
     render();
@@ -1136,6 +1490,13 @@ function wireEvents() {
   );
 
   els.explainButton.addEventListener("click", generateExplanation);
+
+  els.mlFacility.addEventListener("change", populateMlMedicines);
+  els.mlMedicine.addEventListener("change", syncMlInputsFromSelection);
+  els.mlForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    requestPrediction();
+  });
 }
 
 function init() {

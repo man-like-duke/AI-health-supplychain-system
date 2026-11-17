@@ -1,16 +1,18 @@
 import logging
+from datetime import date
 from pathlib import Path
 
 from fastapi import Depends, FastAPI, Query
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from src import __version__
 from src.errors import (
     DataValidationError,
     LLMConfigurationError,
     LLMError,
+    ModelNotAvailableError,
 )
 from src.llm import (
     LLMProvider,
@@ -139,9 +141,79 @@ class ExplanationResponse(BaseModel):
     governance: ExplanationGovernance
 
 
+class StockoutPredictionRequest(BaseModel):
+    """Inputs available at prediction time for one facility/medicine pair."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    facility: str = Field(min_length=1, max_length=120)
+    region: str = Field(min_length=1, max_length=120)
+    medicine: str = Field(min_length=1, max_length=120)
+    current_stock: float = Field(ge=0)
+    monthly_consumption: float = Field(gt=0)
+    lead_time_days: float = Field(gt=0)
+    expiry_days: float = Field(ge=0)
+    recent_consumption_trend: float = Field(default=1.0, gt=0, le=5)
+    historical_stockout_count: int = Field(default=0, ge=0, le=60)
+    replenishment_frequency: float = Field(default=1.0, ge=0, le=30)
+    month: int | None = Field(default=None, ge=1, le=12)
+
+    @field_validator("facility", "region", "medicine")
+    @classmethod
+    def _strip_text(cls, value: str) -> str:
+        stripped = value.strip()
+        if not stripped:
+            raise ValueError("must not be blank")
+        return stripped
+
+
+class DeterministicReference(BaseModel):
+    stockout_risk: str
+    days_of_stock: float
+    lead_time_days: float
+
+
+class PredictionGovernance(BaseModel):
+    data_type: str
+    autonomous_action: bool
+    human_review_required: bool
+    note: str
+    limitations: list[str] = Field(default_factory=list)
+
+
+class StockoutPredictionResponse(BaseModel):
+    facility: str
+    medicine: str
+    predicted_class: int
+    prediction_label: str
+    probability: float
+    probability_band: str
+    threshold: float
+    model_id: str
+    model_version: str
+    deterministic_reference: DeterministicReference | None = None
+    governance: PredictionGovernance
+
+
 def get_llm_provider() -> LLMProvider:
     """FastAPI dependency so tests can override the provider."""
     return get_gemini_provider()
+
+
+def get_stockout_predictor():
+    """FastAPI dependency so tests can override the ML model.
+
+    The import is local so the deterministic endpoints keep working when
+    the optional ML dependencies are not installed.
+    """
+    try:
+        from ml.predict import load_predictor
+    except ImportError as exc:
+        raise ModelNotAvailableError(
+            "ML prediction dependencies are not installed."
+        ) from exc
+
+    return load_predictor()
 
 
 @app.exception_handler(DataValidationError)
@@ -173,6 +245,15 @@ async def handle_llm_error(request, exc):
     )
 
 
+@app.exception_handler(ModelNotAvailableError)
+async def handle_model_not_available_error(request, exc):
+    logger.warning("Stockout model unavailable: %s", exc)
+    return JSONResponse(
+        status_code=503,
+        content={"detail": str(exc)},
+    )
+
+
 @app.exception_handler(Exception)
 async def handle_unexpected_error(request, exc):
     logger.exception("Unhandled error on %s", request.url.path)
@@ -190,6 +271,7 @@ def root():
         "dashboard": "/dashboard",
         "docs": "/docs",
         "health": "/health",
+        "predict_stockout": "/predict-stockout",
     }
 
 
@@ -288,6 +370,91 @@ def get_summary():
     _, _, summary = run_analysis()
 
     return summary
+
+
+def _find_deterministic_reference(
+    facility: str,
+    medicine: str,
+) -> dict | None:
+    """Return the deterministic classification for the same pair, if any.
+
+    The reference lets the dashboard show ML evidence next to the
+    authoritative rule-based result without conflating the two.
+    """
+    try:
+        inventory, _, _ = run_analysis()
+    except DataValidationError:
+        logger.warning(
+            "Deterministic reference unavailable for %s / %s",
+            facility,
+            medicine,
+        )
+        return None
+
+    matches = inventory[
+        (inventory["facility"].str.casefold() == facility.casefold())
+        & (inventory["medicine"].str.casefold() == medicine.casefold())
+    ]
+
+    if matches.empty:
+        return None
+
+    row = matches.iloc[0]
+
+    return {
+        "stockout_risk": str(row["stockout_risk"]),
+        "days_of_stock": round(float(row["days_of_stock"]), 1),
+        "lead_time_days": round(float(row["lead_time_days"]), 1),
+    }
+
+
+@app.post(
+    "/predict-stockout",
+    response_model=StockoutPredictionResponse,
+)
+def predict_stockout(
+    payload: StockoutPredictionRequest,
+    predictor=Depends(get_stockout_predictor),
+):
+    """Predict a 30-day stockout for one facility/medicine pair.
+
+    The prediction is supporting evidence. The deterministic rules in
+    ``/inventory`` and ``/summary`` remain authoritative, and a human must
+    review any operational action.
+    """
+    features = payload.model_dump()
+
+    if features["month"] is None:
+        features["month"] = date.today().month
+
+    result = predictor.predict(features)
+
+    return {
+        "facility": payload.facility,
+        "medicine": payload.medicine,
+        "predicted_class": result.predicted_class,
+        "prediction_label": result.prediction_label,
+        "probability": result.probability,
+        "probability_band": result.probability_band,
+        "threshold": result.threshold,
+        "model_id": result.model_id,
+        "model_version": result.model_version,
+        "deterministic_reference": _find_deterministic_reference(
+            payload.facility,
+            payload.medicine,
+        ),
+        "governance": {
+            "data_type": "synthetic",
+            "autonomous_action": False,
+            "human_review_required": True,
+            "note": (
+                "ML output is predictive evidence only. Deterministic "
+                "risk rules remain authoritative and an authorized "
+                "supply-chain professional must review any action."
+            ),
+            "limitations": predictor.limitations,
+        },
+    }
 
 
 @app.get("/explanation", response_model=ExplanationResponse)

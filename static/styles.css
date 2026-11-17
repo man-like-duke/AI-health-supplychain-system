@@ -773,6 +773,102 @@ body.is-loading::before {
   font-size: 0.85em;
 }
 
+/* ML prediction panel */
+.badge-ml {
+  border-color: var(--border-strong);
+  background: var(--brand-soft);
+  color: var(--brand-strong);
+}
+
+.ml-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.85rem 1rem;
+  align-items: end;
+}
+
+.ml-form .control {
+  min-width: 0;
+}
+
+.ml-advanced {
+  grid-column: 1 / -1;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+  background: var(--surface-2);
+}
+
+.ml-advanced summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.ml-advanced-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.85rem 1rem;
+  margin-top: 0.8rem;
+}
+
+.ml-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ml-result {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 1.1rem;
+}
+
+.ml-card {
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--border-strong);
+  border-radius: 0.8rem;
+  background: var(--surface-2);
+}
+
+.ml-card h3 {
+  margin: 0 0 0.6rem;
+  font-size: 0.95rem;
+}
+
+.ml-card p {
+  margin: 0.45rem 0;
+  font-size: 0.88rem;
+}
+
+.ml-card[data-kind="deterministic"] {
+  border-top-color: var(--brand);
+}
+
+.ml-card[data-kind="ml"] {
+  border-top-color: #7c3aed;
+}
+
+.ml-card[data-kind="decision"] {
+  border-top-color: var(--focus);
+}
+
+.ml-card-note {
+  color: var(--muted);
+  font-size: 0.8rem !important;
+}
+
+.chip[data-risk="MODERATE"] {
+  border-color: var(--medium-border);
+  background: var(--medium-bg);
+  color: var(--medium);
+}
+
 /* Governance */
 .panel-muted p {
   color: var(--muted);
